@@ -1,0 +1,113 @@
+{
+  "ftp://mcc@mcc.site.jadara.work@37.187.145.203": {
+    ".editorconfig": {
+      "type": "-",
+      "size": 258,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".env": {
+      "type": "-",
+      "size": 1296,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".env.example": {
+      "type": "-",
+      "size": 1158,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".htaccess": {
+      "type": "-",
+      "size": 4890,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".well-known": {},
+    "C:\\Users\\ALSABA ELECRONICS\\Desktop\\app\\storage\\logs": {},
+    "README.md": {
+      "type": "-",
+      "size": 4109,
+      "lmtime": 0,
+      "modified": false
+    },
+    "app": {},
+    "app.zip": {
+      "type": "-",
+      "size": 129338364,
+      "lmtime": 0,
+      "modified": false
+    },
+    "artisan": {
+      "type": "-",
+      "size": 1686,
+      "lmtime": 0,
+      "modified": false
+    },
+    "bootstrap": {},
+    "cgi-bin": {},
+    "composer.json": {
+      "type": "-",
+      "size": 2476,
+      "lmtime": 0,
+      "modified": false
+    },
+    "composer.lock": {
+      "type": "-",
+      "size": 447915,
+      "lmtime": 0,
+      "modified": false
+    },
+    "config": {},
+    "database": {},
+    "error_log": {
+      "type": "-",
+      "size": 7326,
+      "lmtime": 0,
+      "modified": false
+    },
+    "package.json": {
+      "type": "-",
+      "size": 248,
+      "lmtime": 0,
+      "modified": false
+    },
+    "php.ini": {
+      "type": "-",
+      "size": 579,
+      "lmtime": 0,
+      "modified": false
+    },
+    "phpunit.xml": {
+      "type": "-",
+      "size": 1134,
+      "lmtime": 0,
+      "modified": false
+    },
+    "public": {},
+    "resources": {
+      "views": {
+        "site": {
+          "blogDetails.blade.php": {
+            "type": "-",
+            "size": 5338,
+            "lmtime": 1734596600484.0964,
+            "modified": false
+          }
+        }
+      }
+    },
+    "routes": {},
+    "storage": {},
+    "tests": {},
+    "vendor": {},
+    "vite.config.js": {
+      "type": "-",
+      "size": 263,
+      "lmtime": 0,
+      "modified": false
+    }
+  },
+  "$version": 1
+}

@@ -1,0 +1,16 @@
+{
+    "host": "37.187.145.203",
+    "username": "mcc@mcc.site.jadara.work",
+    "password": "X37!=US=!)6g",
+    "remotePath": "/",
+    "protocol": "ftp",
+    "port": 0,
+    "fileNameEncoding": "utf8",
+    "autoUpload": false,
+    "autoDelete": false,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}
