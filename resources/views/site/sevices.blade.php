@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('الرئسية') .'|'.getSetting('site_name_'.app()->getLocale()))
+@section('title', __('Services') .'|'.getSetting('site_name_'.app()->getLocale()))
 
 @section('content')
 

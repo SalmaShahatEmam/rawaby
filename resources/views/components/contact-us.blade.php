@@ -3,74 +3,61 @@
          <div class="row">
             <div class="col-lg-6 ctm-n-padd">
                 <div class="contatc-us-form">
-                       <h2> تواصل معنا </h2>
+                       <h2> {{ __('contact_us') }} </h2>
                        <form id="contactForm" action="{{ route('site.contact.request') }}" method="post">
                             <div class="row">
                                 @csrf
 
-                                <div class="col-md-6"> <input type="text" placeholder="الاسم" name="name">
+                                <div class="col-md-6"> <input type="text" placeholder="{{ __('name') }}" name="name">
                                     <span class="name-error error-text text-danger"></span>
-
                                 </div>
 
-                                <div class="col-md-6"> <input type="text" placeholder="البريد الالكتروني" name="email">
+                                <div class="col-md-6"> <input type="text" placeholder="{{ __('email') }}" name="email">
                                     <span class="email-error error-text text-danger"></span>
                                 </div>
-                                <div class="col-md-6"> <input type="text" placeholder="رقم الهاتف" name="phone">
+                                <div class="col-md-6"> <input type="text" placeholder="{{ __('phone') }}" name="phone">
                                     <span class="phone-error error-text text-danger"></span>
                                 </div>
-                                <div class="col-md-6"> <input type="text" placeholder="الموضوع" name="subject">
+                                <div class="col-md-6"> <input type="text" placeholder="{{ __('subject') }}" name="subject">
                                     <span class="subject-error error-text text-danger"></span>
                                 </div>
 
-                                <div class="col-12"> <textarea placeholder="الرسالة"  name="message">
-
-                                </textarea>
+                                <div class="col-12"> <textarea placeholder="{{ __('message') }}"  name="message"></textarea>
                                 <span class="message-error error-text text-danger"></span>
                             </div>
                             </div>
 
-                            <button type="submit" > إرسال </button>
+                            <button type="submit"> {{ __('submit') }} </button>
                        </form>
                 </div>
             </div>
             <div class="col-lg-6 ctm-n-padd">
                 <div class="contact-us-info">
-                     <h2> بيانات التواصل </h2>
+                     <h2> {{ __('contact_info') }} </h2>
 
-                     <div class="contact-item">
+                     <a href="{{ 'mailto:'.getSetting('email') }}" class="contact-item">
                           <div class="icon"> <i class="fa-solid fa-envelope"></i> </div>
                           <div class="text">
-                                <p> البريد الالكتروني </p>
-                                <p class="descrip"> MetalPulse@gmail.com </p>
+                                <p> {{ __('email') }} </p>
+                                <p class="descrip">{{getSetting('email') }}</p>
                           </div>
-                     </div>
+                     </a>
 
-                     <div class="contact-item">
+                     <a href="{{ 'tel:+'.getSetting('phone') }}" class="contact-item">
                           <div class="icon"> <i class="fa-solid fa-phone"></i> </div>
                           <div class="text">
-                                <p> رقم التواصل </p>
-                                <p class="descrip"> +9625564565468 </p>
+                                <p> {{ __('contact_number') }} </p>
+                                <p class="descrip">{{ getSetting('phone') }} </p>
                           </div>
-                     </div>
+                     </a>
 
-                     <div class="contact-item">
+                     <a href="#" class="contact-item">
                           <div class="icon"> <i class="fa-solid fa-location-dot"></i> </div>
                           <div class="text">
-                                <p> موقعنا </p>
-                                <p class="descrip">   المنطقة الصناعية - شارع 10، المدينة، الدولة  </p>
+                                <p> {{ __('location') }} </p>
+                                <p class="descrip"> {{ __('location_description') }} </p>
                           </div>
-                     </div>
-
-                     <div class="contact-item">
-                          <div class="icon"> <i class="fa-solid fa-globe"></i> </div>
-                          <div class="text">
-                                <p> السبك المعدني </p>
-                                <p class="descrip"> MetalPulse.com </p>
-                          </div>
-                     </div>
-
-
+                     </a>
                 </div>
             </div>
          </div>

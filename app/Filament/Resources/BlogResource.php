@@ -150,11 +150,11 @@ class BlogResource extends Resource
                     ->words(50),
 
 
-                TextColumn::make('created_at')
+             /*    TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true), */
 
             ])
             ->filters([

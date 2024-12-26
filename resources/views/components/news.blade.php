@@ -2,29 +2,29 @@
 
 <section class="news-section">
     <div class="main-container">
-         <h2> الأخبار </h2>
-         <p> ابقَ على اطلاع بأحدث المستجدات في عالم السبك المعدني والصناعات المعدنية من خلال مقالاتنا ونصائحنا المتنوعة. </p>
+         <h2>{{ __('News') }}</h2>
+         <p>{{ __('Stay updated with the latest developments in the world of metal casting and manufacturing industries through our diverse articles and tips.') }}</p>
          <div class="row">
             @foreach($blogs as $blog)
               <div class="col-lg-6">
                    <div class="news-card">
-                        <div class="img"> <img src="{{  $blog->image_path  }}" alt=""> </div>
+                        <div class="img"> <img src="{{ $blog->image_path }}" alt=""> </div>
 
-                        <h4>{{ $blog->name }}</h4>
-                        <p> {!! $blog->desc !!}</p>
+                        <h4>{!! \Illuminate\Support\Str::limit($blog->name, 50) !!}</h4>
+                        <p> {!! \Illuminate\Support\Str::limit($blog->desc, 100) !!} </p>
 
                         <div class="news-card-links">
-                             <a href="{{  route('site.blogs.show',$blog->slug) }}"> عرض التفاصيل  </a>
+                             <a href="{{ route('site.blogs.show', $blog->slug) }}">{{ __('View Details') }}</a>
                              <div class="date">
                                  <img src="{{ asset('site') }}/images/calendar-2.png" alt="">
-                                 <p> <p>{{ \Carbon\Carbon::createFromTimestamp((int)$blog->created_at)->translatedFormat('F j, Y') }}</p>
+                                 <p> <p>{{ $blog->created_at}}</p>
                                 </p>
                              </div>
                         </div>
                    </div>
               </div>
 
-              @endforeach
+            @endforeach
          </div>
     </div>
 </section>

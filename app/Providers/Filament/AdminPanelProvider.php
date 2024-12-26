@@ -32,15 +32,16 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+         //  ->register()
             ->brandName(function () {
                 $locale = app()->getLocale();
                 $property = 'site_name_' . $locale;
                 return app(GeneralSettings::class)->$property;
             })
 
-            ->brandLogo(fn () => view('filament.admin.logo'))
-
-            // ->brandLogo(asset('storage/'. app(GeneralSettings::class)->logo))
+            // ->brandLogo(fn () => view('filament.admin.logo'))
+           ->brandLogoHeight('4rem')
+             ->brandLogo(asset('storage/'. app(GeneralSettings::class)->logo))
 
             ->favicon(asset('storage/'. app(GeneralSettings::class)->favicon))
 

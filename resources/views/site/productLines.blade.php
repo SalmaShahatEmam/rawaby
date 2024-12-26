@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('الرئسية') . '|' . getSetting('site_name_' . app()->getLocale()))
+@section('title', __('Home') . '|' . getSetting('site_name_' . app()->getLocale()))
 
 @section('content')
 
@@ -42,8 +42,6 @@
                                 <div class="mx-0 row">
                                     <section class="production-mission">
 
-
-
                                         <div class="mx-0 row our-mission">
                                             <div class="col-lg-4 col-md-6 col-sm-12">
 
@@ -54,12 +52,11 @@
                                                     </div>
                                                     <div class="mission-text">
 
-                                                        <h3>المزايا</h3>
+                                                        <h3>{{ __('Features') }}</h3>
                                                         <p>{!! $product->feature !!}</p>
                                                     </div>
                                                 </div>
                                             </div>
-
 
                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <div class="mission-production-container">
@@ -69,9 +66,8 @@
                                                     </div>
                                                     <div class="mission-text">
 
-                                                        <h3>المنتجات</h3>
-                                                        <p> {!! $product->product !!}
-                                                          </p>
+                                                        <h3>{{ __('Products') }}</h3>
+                                                        <p> {!! $product->product !!}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,7 +78,7 @@
                                                     </div>
                                                     <div class="mission-text">
 
-                                                        <h3>المواصفات الفنية</h3>
+                                                        <h3>{{ __('Technical Specifications') }}</h3>
                                                         <p>{!! $product->advantage !!}</p>
                                                     </div>
                                                 </div>
@@ -94,10 +90,12 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
-
-@endforeach
-
+                    <div class="col-12 production-item production-item-route">
+                        <p>{{ __('For more information or to benefit from manufacturing services') }}</p>
+                        <a class="apply-btn" href="{{route('site.request')}}">{{ __('Request') }}</a>
+                    </div>
                 </div>
             </div>
         </div>

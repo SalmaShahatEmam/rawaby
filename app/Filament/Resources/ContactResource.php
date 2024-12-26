@@ -29,7 +29,7 @@ class ContactResource extends Resource
     protected static ?int $navigationSort = 6;
     public static function getNavigationGroup(): ?string
     {
-        return __('Customer Data');
+        return __('Contact Messages');
     }
     protected static ?string $navigationIcon = 'heroicon-o-inbox';
     public static function getModelLabel(): string
@@ -217,7 +217,7 @@ class ContactResource extends Resource
 
                         TextEntry::make('email')
                             ->label(__('Email'))
-                            ->url(fn(ServiceOrder $record) => 'mailto:' . $record->email, true) // Redirect to email
+                            ->url(fn(Contact $record) => 'mailto:' . $record->email, true) // Redirect to email
 
                         ,
 

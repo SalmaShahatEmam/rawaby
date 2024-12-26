@@ -1,11 +1,13 @@
 @extends('site.layouts.app')
-@section('title', __('الرئسية') . '|' . getSetting('site_name_' . app()->getLocale()))
+@section('title', $project->name  . '|' . getSetting('site_name_' . app()->getLocale()))
 
 @section('content')
 
     @php
-        $name = __('Projects');
+        $name =  $project->name;
     @endphp
+        <x-sub-header :name="$name" />
+
      <section class="project-details-section" >
         <div class="main-container">
                     <div class="img-project"> <img src="{{  $project->image_path }}" alt=""> </div>
@@ -15,7 +17,7 @@
                                <p> {!! $project->desc !!}</p>
                           </div>
                           <div class="project-links">
-                              <h2> نظرة عامة </h2>
+                              <h2> {{ __("نظرة عامة")}}</h2>
 
                               <div class="item-link">
                                   <div class="icon">
@@ -50,7 +52,7 @@
                                         </svg>
                                   </div>
                                   <div class="txt">
-                                      <p class="txt-h" > الإطار الزمني </p>
+                                      <p class="txt-h" > {{ __("الإطار الزمني ") }}</p>
                                       <p> {{  $project->time}}</p>
                                   </div>
                               </div>
@@ -66,8 +68,8 @@
             <div class="result-item">
                 <div class="img"> <img src="{{ asset('site') }}/images/diagram.png" alt=""> </div>
                 <div class="txt">
-                <h3> المخرجات </h3>
-                <p> {!! $project->product !!} </p>
+                <h3> {{ __("المخرجات") }} </h3>
+                <p> {!! nl2br(e($project->product)) !!} </p>
 
                 </div>
            </div>
@@ -75,16 +77,16 @@
         <div class="result-item">
                 <div class="img"> <img src="{{ asset('site') }}/images/star.png" alt=""> </div>
                 <div class="txt">
-                <h3> المميزات التقنية </h3>
-                <p> {!! $project->feature !!} </p>
+                <h3> {{ __("المميزات التقنية") }}</h3>
+                <p>{!! nl2br(e($project->feature)) !!} </p>
                </div>
         </div>
 
         <div class="result-item">
                 <div class="img"> <img src="{{ asset('site') }}/images/target-result.png" alt=""> </div>
                 <div class="txt">
-                <h3> الفئات المستهدفة </h3>
-                <p> {!! $project->target !!} </p>
+                <h3> {{ __("الفئات المستهدفة") }}</h3>
+                <p> {!!$project->target !!} </p>
                 </div>
         </div>
    </div>
@@ -92,7 +94,7 @@
 </div>
 
 <div>
-      <p class="link-txt"> من خلال هذا المشروع، نهدف إلى أن نكون شريكًا استراتيجيًا موثوقًا لشركات النفط والغاز، مع التركيز على الجودة والابتكار, للطلب ولمزيد من المعلومات  </p>
-      <a href="{{  route('site.request',["type"=>"projects" ,"slug"=>$project->slug])}}" class="link-contact-us">  اطلب الان  </a>
+      <p class="link-txt">{{__(" من خلال هذا المشروع، نهدف إلى أن نكون شريكًا استراتيجيًا موثوقًا لشركات النفط والغاز، مع التركيز على الجودة والابتكار, للطلب ولمزيد من المعلومات ")}} </p>
+      <a href="{{  route('site.request',["type"=>"projects" ,"slug"=>$project->slug])}}" class="link-contact-us">  {{  __('أطلب ألان')}} </a>
 </div>
 @endsection

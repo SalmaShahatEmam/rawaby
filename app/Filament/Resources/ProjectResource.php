@@ -104,18 +104,34 @@ class ProjectResource extends Resource
 
                     ->schema([
 
-                        RichEditor::make('desc_ar')
+                        MarkdownEditor::make('desc_ar')
                             ->label(__('desc_ar'))
                             ->minLength(3)
+                            ->maxLength(255)
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                                'table',
+                                'italic',
 
+
+                            ])
                             ->columnSpan(3)
                             ->required(),
 
 
-                        RichEditor::make('desc_en')
+                            MarkdownEditor::make('desc_en')
                             ->label(__('desc_en'))
                             ->minLength(3)
+                            ->maxLength(255)
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                                'table',
+                                'italic',
 
+
+                            ])
                             ->columnSpan(3)
                             ->required(),
 
@@ -147,10 +163,28 @@ class ProjectResource extends Resource
                         MarkdownEditor::make('products_ar')
                             ->label(__('Products in arabic'))
                             ->required()
+                            ->maxLength(1500)
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                                'table',
+                                'italic',
+
+
+                            ])
                             ->columnSpan(1),
                         MarkdownEditor::make('products_en')
                             ->label(__('Products in english'))
-                            ->required()->columnSpan(1),
+                            ->required()->columnSpan(1)->maxLength(1500)
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                                'table',
+                                'italic',
+
+
+                            ]),
+
 
 
                     ]),
@@ -162,10 +196,29 @@ class ProjectResource extends Resource
                         MarkdownEditor::make('feature_ar')
                             ->label(__('Features in arabic'))
                             ->required()
-                            ->columnSpan(1),
+                            ->maxLength(1500)
+
+                            ->columnSpan(1) ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                                'table',
+                                'italic',
+
+
+                            ]),
                         MarkdownEditor::make('feature_en')
                             ->label(__('Features in english'))
-                            ->required()->columnSpan(1),
+                            ->required()
+                            ->maxLength(1500)
+                            ->columnSpan(1)
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                                'table',
+                                'italic',
+
+
+                            ]),
 
 
                     ]),
@@ -178,9 +231,26 @@ class ProjectResource extends Resource
                         MarkdownEditor::make('targets_ar')
                             ->label(__('Targets in arabic'))
                             ->required()
-                            ->columnSpan(1),
+                            ->maxLength(1500)
+
+                            ->columnSpan(1)
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                                'table',
+                                'italic',
+                            ]),
                         MarkdownEditor::make('targets_en')
                             ->label(__('Targets in english'))
+                            ->maxLength(1500)
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'codeBlock',
+                                'table',
+                                'italic',
+
+
+                            ])
                             ->required()->columnSpan(1),
 
 
@@ -194,7 +264,7 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('image')
+            ImageColumn::make('image')
                 ->label(__('image'))
                 ->circular(),
             TextColumn::make('name_' . app()->getLocale())
@@ -209,7 +279,7 @@ class ProjectResource extends Resource
                 ->words(50),
             ])
             ->filters([
-               
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

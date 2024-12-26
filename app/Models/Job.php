@@ -11,6 +11,7 @@ class Job extends Model
 {
     use HasFactory;
 
+    // protected $table="mcc_jobs";
     protected $fillable = [
         'title_en',
         'title_ar',

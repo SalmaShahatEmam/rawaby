@@ -20,7 +20,7 @@ class JobController extends Controller
 
     public function show($slug)
     {
-        $job = Job::where('slug',$slug)->first();
+        $job = Job::where('slug',$slug)->firstOrFail();
 
         return view('site.jobDetails',compact('job'));
 
@@ -29,7 +29,9 @@ class JobController extends Controller
 
     public function apply($slug)
     {
-        $job = Job::where('slug',$slug)->first();
+        //first or fail to return 404 if job not found
+      //  $job = Job::where('slug',$slug)->first();
+      $job = Job::where('slug',$slug)->firstOrFail();
 
         return view('site.jobApplicaions',compact('job'));
 
@@ -41,7 +43,8 @@ class JobController extends Controller
 
         if ($request->hasFile('resume')) {
 
-            $resume_path = $request->resume->store('resume');
+          //  $resume_path = $request->resume->store('resume');
+            $resume_path = $request->file('resume')->store('resume', 'public');
 
             JobApplication::create([
                 'name' =>$request->name,

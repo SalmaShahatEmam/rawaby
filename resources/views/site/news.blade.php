@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('الرئسية') . '|' . getSetting('site_name_' . app()->getLocale()))
+@section('title', __('Blogs') . '|' . getSetting('site_name_' . app()->getLocale()))
 
 @section('content')
 
@@ -26,7 +26,7 @@
                         </p>
 
                         <div class="news-card-links">
-                          <a href="{{  route('site.blogs.show',$blog->slug) }}">  تفاصيل  </a>
+                          <a href="{{  route('site.blogs.show',$blog->slug) }}">  {{ __("تفاصيل") }}  </a>
                         </div>
                     </div>
                     @endforeach
@@ -38,7 +38,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="last-news">
                     <div class="last_news_header">
-                        <h3>{{   __('last')  }}</h3>
+                        <h3>{{   __('The latest')  }}</h3>
                     </div>
                     <div class="last_news_content">
                         @foreach($other_blogs as $blog)

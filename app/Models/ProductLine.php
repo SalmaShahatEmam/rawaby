@@ -59,9 +59,9 @@ class ProductLine extends Model
     {
         return asset('storage/' . $this->image);
     }
-    public function getCreatedAtAttribute($value)
+   /*  public function getCreatedAtAttribute($value)
     {
         \Carbon\Carbon::setLocale(app()->getLocale());
         return \Carbon\Carbon::parse($value)->translatedFormat('j F Y');
-    }
+    } */
 }

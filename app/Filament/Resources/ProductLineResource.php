@@ -89,7 +89,15 @@ class ProductLineResource extends Resource
                             RichEditor::make('desc_ar')
                                 ->label(__('desc_ar'))
                                 ->minLength(3)
+                                ->maxLength(1500)
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
 
+
+                                ])
                                 ->columnSpan(3)
                                 ->required(),
 
@@ -97,7 +105,15 @@ class ProductLineResource extends Resource
                             RichEditor::make('desc_en')
                                 ->label(__('desc_en'))
                                 ->minLength(3)
+                                ->maxLength(1500)
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
 
+
+                                ])
                                 ->columnSpan(3)
                                 ->required(),
 
@@ -129,11 +145,28 @@ class ProductLineResource extends Resource
                             MarkdownEditor::make('advantages_ar')
                                 ->label(__('advantages in arabic'))
                                 ->required()
+                                ->maxLength(1500)
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ])
                                 ->columnSpan(1),
                             MarkdownEditor::make('advantages_en')
                                 ->label(__('advantages in english'))
-                                ->required()->columnSpan(1),
+                                ->required()->columnSpan(1)
+                                ->maxLength(1500)
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
 
+
+                                ])
 
                         ]),
 
@@ -145,11 +178,28 @@ class ProductLineResource extends Resource
                         MarkdownEditor::make('product_ar')
                         ->label(__('Products in arabic'))
                         ->required()
+                        ->maxLength(1500)
+                        ->disableToolbarButtons([
+                            'attachFiles',
+                            'codeBlock',
+                            'table',
+                            'italic',
+
+
+                        ])
                         ->columnSpan(1),
                         MarkdownEditor::make('product_en')
                         ->label(__('Products in english'))
-                        ->required()->columnSpan(1),
+                        ->required()->columnSpan(1)
+                        ->maxLength(1500)
+                        ->disableToolbarButtons([
+                            'attachFiles',
+                            'codeBlock',
+                            'table',
+                            'italic',
 
+
+                        ])
 
                     ]),
 
@@ -160,10 +210,28 @@ class ProductLineResource extends Resource
                             MarkdownEditor::make('feature_ar')
                                 ->label(__('Features in arabic'))
                                 ->required()
+                                ->maxLength(1500)
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ])
                                 ->columnSpan(1),
                             MarkdownEditor::make('feature_en')
                                 ->label(__('Features in english'))
-                                ->required()->columnSpan(1),
+                                ->required()->columnSpan(1)->maxLength(1500)
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
+
 
 
                         ]),

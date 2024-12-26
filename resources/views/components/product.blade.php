@@ -3,8 +3,8 @@
 <section class="our-products">
     <div class="main-container">
         <div class="our-products-header">
-            <h2>منتجاتنا</h2>
-            <a href="{{ route('site.products') }}">عرض الكل</a>
+            <h2>{{ __("منتجاتنا") }}</h2>
+            <a href="{{ route('site.products') }}">{{ __("عرض الكل") }}</a>
         </div>
         <div class="our-products-container">
             <div class="swiper myProductsSwiper">

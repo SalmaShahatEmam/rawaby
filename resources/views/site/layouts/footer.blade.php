@@ -1,14 +1,10 @@
-<footer style="background-image: url('images/footer-img.png')">
+<footer style="background-image: url('{{ asset('site') }}/images/footer-img.png')">
     <div class="main-container">
         <div class="footer-head">
             <a href="/"> <img src="{{ asset('site') }}/images/footer-logo.png" alt="" /> </a>
 
             <h4>
-                رواد في تقديم حلول سبك معدني مبتكرة، تلبي احتياجات مختلف القطاعات
-                الصناعية، ونسعى باستمرار لتحقيق رضا عملائنا من خلال شراكات قوية
-                وبنية تحتية متقدمة. نحن هنا لنقدّم لعملائنا منتجات تفوق توقعاتهم،
-                ونهتم بأدق التفاصيل لضمان الجودة العالية في كل مرحلة من مراحل
-                التصنيع.
+                {{ __("Innovative metal casting solutions catering to the needs of various industrial sectors. We continuously strive to achieve customer satisfaction through strong partnerships and advanced infrastructure. We are here to offer products that exceed our customers' expectations, paying attention to the smallest details to ensure high quality at every stage of manufacturing.") }}
             </h4>
         </div>
 
@@ -18,49 +14,42 @@
                     <div class="footer-links">
 
                         <div class="links-footer-item">
-                            <h4>تواصل</h4>
-                            <a href="/#contactUs"> تواصل معنا </a>
-                            <a href="{{ route('site.jobs') }}"> وظائف </a>
+                            <h4>{{ __('Contact') }}</h4>
+                            <a href="/#contactUs"> {{ __('Contact Us') }} </a>
+                            <a href="{{ route('site.jobs') }}"> {{ __('Jobs') }} </a>
                         </div>
 
                         <div class="links-footer-item">
-                            <h4>روابط أساسية</h4>
-                            <a href="/"> الرئيسية </a>
-                            <a href="{{ route('site.services') }}"> الخدمات </a>
-                            <a href="{{ route('site.products') }}"> المنتجات </a>
-                            <a href="{{ route('site.projects') }}"> المشاريع </a>
-                            <a href="{{ route('site.sector') }}"> القطاعات المستهدفة </a>
+                            <h4>{{ __('Key Links') }}</h4>
+                            <a href="/"> {{ __('Home') }} </a>
+                            <a href="{{ route('site.services') }}"> {{ __('Services') }} </a>
+                            <a href="{{ route('site.products') }}"> {{ __('Products') }} </a>
+                            <a href="{{ route('site.projects') }}"> {{ __('Projects') }} </a>
+                            <a href="{{ route('site.sector') }}"> {{ __('Target Sectors') }} </a>
                         </div>
 
                         <div class="links-footer-item">
-                            <h4>معلومات إضافية</h4>
-                            <a href="{{ route('site.questions') }}"> الأسئلة الشائعة </a>
-                            <a href="{{ route('site.partners') }}"> شركاؤنا </a>
-                            <a href="{{ route('site.blogs') }}"> الأخبار </a>
-                            <a href="{{ route('site.liberary') }}"> المكتبة المرئية </a>
+                            <h4>{{ __('Additional Info') }}</h4>
+                            <a href="{{ route('site.questions') }}"> {{ __('FAQ') }} </a>
+                            <a href="{{ route('site.partners') }}"> {{ __('Our Partners') }} </a>
+                            <a href="{{ route('site.blogs') }}"> {{ __('News') }} </a>
+                            <a href="{{ route('site.liberary') }}"> {{ __('Media Library') }} </a>
                         </div>
 
                         <div class="links-footer-item">
-                            <h4>تابعنا عبر</h4>
-                            <a href="/"> فيسبوك </a>
-                            <a href="/"> لينكد إن </a>
-                            <a href="/"> انستجرام </a>
+                            <h4>{{ __('Follow Us') }}</h4>
+                            <a href="/"> {{ __('Facebook') }} </a>
+                            <a href="/"> {{ __('LinkedIn') }} </a>
+                            <a href="/"> {{ __('Instagram') }} </a>
                         </div>
 
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <h2>النشرة الاخبارية</h2>
+                    <h2>{{ __('Newsletter') }}</h2>
                     <p class="desc">
-                        اشترك في النشرة البريدية لتصلك آخر الأخبار والعروض من شركة
-                        السبك المعدني المحدودة
+                        {{ __('Subscribe to the newsletter to receive the latest news and offers from Metal Casting Limited.') }}
                     </p>
-
-                  <!--   <form action="">
-                        <input type="text" placeholder="ادخل بريدك  الالكتروني " />
-
-                        <button type="submit">إرسال</button>
-                    </form> -->
 
                     <form id="blogEmail" action="{{ route('site.blog.user') }}" method="post">
                         @csrf
@@ -73,94 +62,66 @@
         </div>
 
         <div class="copy-write">
-            © 2024 السبك المعدني المحدودة - جميع الحقوق محفوظة.
+            <h4>© 2024 {{ __('Metal Casting Limited') }} - {{ __('All rights reserved.') }}</h4>
+            <h4>{{ __('Made with love') }} <span><i class="fa fa-heart"></i></span> {{ __('at Jadara Laboratories') }}</h4>
         </div>
     </div>
 </footer>
-
-
-
-
-
 
 <!-- start menu responsive =========== -->
 <div class="bg_menu "></div>
 <div class="menu_responsive" id="menu-div">
 
     <div class="element_menu_responsive">
-        <!-- <a href="/" class="logo-container">
-            <img src="images/logo.png">
-        </a> -->
         <div class="element">
             <ul class="main-menu">
-                <li class="active-menu"><a href="">الرئيسية</a></li>
+                <li class="menu-logo">
+                    <a href="/" >
+                        <img src="{{ asset('site') }}/images/logo 1.svg">
+                    </a>
+                </li>
+                <li class="active-menu"><a href="/" @if( request()->is('/')) class="active" @endif >{{ __('Home') }}</a></li>
                 <li class="about-company">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            عن الشركة
+                            {{ __('About Us') }}
                         </button>
                         <ul class="dropdown-menu">
-
-
-                            <li><a class="dropdown-item" href="{{ route('site.about') }}">من نحن</a></li>
-                            <li><a class="dropdown-item" href="{{ route('site.products') }}">منتجاتنا</a></li>
-                            <li><a class="dropdown-item" href="{{ route('site.services') }}">خدماتنا</a></li>
-                            <li><a class="dropdown-item" href="{{ route('site.projects') }}">مشاريعنا</a></li>
-                            <li><a class="dropdown-item" href="{{ route('site.sector') }}">القطاعات المستهدفة </a></li>
-                            <li><a class="dropdown-item" href="{{ route('site.liberary') }}">المكتبة المرئية </a></li>
-                            <li><a class="dropdown-item" href="{{ route('site.blogs') }}">المدونة</a></li>
-                            <li><a class="dropdown-item" href="{{ route('site.partners') }}">شركائنا</a></li>
-
-
-
+                            <li><a class="dropdown-item"  href="{{ route('site.about') }}"> {{ __('Who We Are') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('site.products') }}"> {{ __('Our Products') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('site.services') }}"> {{ __('Our Services') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('site.projects') }}"> {{ __('Our Projects') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('site.sector') }}"> {{ __('Target Sectors') }} </a></li>
+                            <li><a class="dropdown-item" href="{{ route('site.liberary') }}"> {{ __('Media Library') }} </a></li>
+                            <li><a class="dropdown-item" href="{{ route('site.blogs') }}"> {{ __('Blog') }} </a></li>
+                            <li><a class="dropdown-item" href="{{ route('site.partners') }}"> {{ __('Our Partners') }}</a></li>
                         </ul>
                     </div>
-
-
-
-
                 </li>
-                <li><a href="{{ route('site.productlines') }}">خطوط الانتاج</a></li>
-                <li><a href="/#contactUs">تواصل معنا</a></li>
-                <li> <a href="{{  route('site.jobs')}}" >قدم على وظيفة</a> </li>
+                <li><a href="{{ route('site.productlines') }}" @if( request()->is('productlines')) class="active" @endif>{{ __('Production Lines') }}</a></li>
+                <li><a href="/#contactUs">{{ __('Contact Us') }}</a></li>
+                <li> <a href="{{  route('site.jobs')}}" @if( request()->is('jobs')) class="active" @endif>{{ __('Apply for a Job') }}</a> </li>
                 <li class="about-company language">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             AR
                         </button>
+                      
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">AR</a></li>
-                            <li><a class="dropdown-item" href="#">EN</a></li>
-
-
-
-
+                            <li><a class="dropdown-item"  @if(app()->getLocale() != "en") class=" dropdown-item active-lang" @endif href="/toggle-language/ar">AR</a></li>
+                            <li><a class="dropdown-item"  @if(app()->getLocale() != "en") class="dropdown-item active-lang" @endif href="/toggle-language/en">EN</a></li>
                         </ul>
                     </div>
-
-
-
-
                 </li>
             </ul>
         </div>
 
     </div>
-
-
-
-
-    <div class="remove-mune">
-        <span></span>
-    </div>
-
-
-
-
 </div>
 </main>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
@@ -239,13 +200,20 @@
                 success: function(response) {
                  //   console.log(response.result)
                     $('#service-offers').empty();
+                    $('#service-offers').append(
 
+`<option value="">اختر</option>`
+);
                     $.each(response.result, function(key, element) {
                      //   console.log(element)
+
                             $('#service-offers').append(
+
                                 `<option value="${element.id}">${lang == "ar" ? element.name_ar : element.name_en }</option>`
                             );
                         });
+
+
                 },
                 error: function(xhr) {
 
@@ -281,7 +249,7 @@
                     });
 
                     // Optionally, clear the form
-                    $('#contactForm')[0].reset();
+                    $('#requestService')[0].reset();
                 },
                 error: function(xhr) {
                     // Display validation errors
@@ -304,7 +272,6 @@
                 }
             });
         });
-
 
         $(document).ready(function() {
             $('#blogEmail').on('submit', function(event) {

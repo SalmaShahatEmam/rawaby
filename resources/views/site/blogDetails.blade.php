@@ -1,12 +1,14 @@
 
 @extends('site.layouts.app')
-@section('title', __('الرئسية') . '|' . getSetting('site_name_' . app()->getLocale()))
+@section('title',$blog->name . '|' . getSetting('site_name_' . app()->getLocale()))
 
 @section('content')
 
-    @php
-        $name = __('Blog Details');
-    @endphp
+@php
+$name =$blog->name;
+$parent =__("Blogs");
+@endphp
+<x-sub-header :name="$name" :parent="$parent" />
 <section class="news-page">
     <div class="main-container">
         <div class="row">
@@ -42,7 +44,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="last-news">
                     <div class="last_news_header">
-                        <h3>الاحدث</h3>
+                        <h3>{{   __('The latest') }}</h3>
                     </div>
                     <div class="last_news_content">
                         @foreach($other_blogs as $blog)
@@ -63,7 +65,7 @@
                                         <path d="M7.3476 13.4537H7.35484" stroke="#666666" stroke-width="1.61122" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
 
-                                    <span>{{ date("F j, Y",(int)$blog->created_at)}}</span>
+                                    <span>{{ $blog->created_at}}</span>
 
                                 </div>
                             </div>

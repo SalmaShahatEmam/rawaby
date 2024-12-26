@@ -139,11 +139,27 @@ class ServiceResource extends Resource
 
                             MarkdownEditor::make('service_steps_ar')
                                 ->label(__('advantages in arabic'))
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ])
                                 ->required(),
 
 
                             MarkdownEditor::make('service_steps_en')
                                 ->label(__('advantages in english'))
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ])
                                 ->required(),
                         ]),
 
@@ -155,12 +171,27 @@ class ServiceResource extends Resource
                         ->schema([
                             MarkdownEditor::make('advantages_ar')
                                 ->label(__('advantages in arabic'))
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
 
                             MarkdownEditor::make('advantages_en')
                                 ->label(__('advantages in english'))
-                                ->required(),
+                                ->required() ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
                         ]),
 
 
@@ -173,7 +204,8 @@ class ServiceResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name_' . app()->getLocale())
-                    ->label(__("name")),
+                    ->label(__("name"))
+                    ->limit(20),
                 TextColumn::make('desc_' . app()->getLocale())
                     ->label(__('description'))
                     ->limit(20),

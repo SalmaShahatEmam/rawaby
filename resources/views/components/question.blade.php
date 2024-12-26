@@ -3,8 +3,8 @@
 <section>
     <div class="main-container">
         <div class="common-questions-head">
-            <h2> الأسئلة الشائعة </h2>
-            <a href="{{  route('site.questions')}}"> عرض الكل </a>
+            <h2> {{  __("Common Questions")}}</h2>
+            <a href="{{  route('site.questions')}}"> {{  __("View All")}}</a>
         </div>
         <div class="questions-common-conatiner">
             <div class="accordion" id="accordionExample">

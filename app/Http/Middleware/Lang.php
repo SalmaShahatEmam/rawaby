@@ -24,7 +24,7 @@ class Lang
             return $next($request);
         } else {
             // set lang
-            session()->put('lang', 'ar');
+            session()->put('lang', 'en');
 
             // return next
             return $next($request);

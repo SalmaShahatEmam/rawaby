@@ -25,7 +25,7 @@ class JobApplication extends Model
 
     public function getFilePathAttribute()
     {
-        return asset('storage' . $this->resume);
+        return asset('storage/' . $this->resume);
     }
 
     public function job()

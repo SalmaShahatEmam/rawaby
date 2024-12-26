@@ -40,7 +40,8 @@ class HomeController extends Controller
         $products = Product::all();
         $projects = Project::all();
         $partners = Partner::all();
-        $blogs = Blog::take(4)->get();
+        //fix this
+        $blogs = Blog::orderBy('created_at', 'desc')->take(2)->get();
         $questions = Question::all();
 
 
@@ -56,7 +57,7 @@ class HomeController extends Controller
         $contact = Contact::create($request->validated());
 
 
-      /*   Notification::make()
+        Notification::make()
             ->title('يريد العميل ' . $request->name . ' التواصل معك')
             ->actions([
                 Action::make('view')
@@ -71,7 +72,7 @@ class HomeController extends Controller
             // ->broadcast(User::role('admin')->first());
             ->sendToDatabase(User::role('admin')->first());
 
-        event(new DatabaseNotificationsSent(User::role('admin')->first())); */
+        event(new DatabaseNotificationsSent(User::role('admin')->first()));
 
 
         return response()->json(['success' => __('تم ارسال الرسالة بنجاح وسوف يتم الرد عليك في اقرب وقت')]);
@@ -191,6 +192,25 @@ class HomeController extends Controller
         $resource = $model::findOrFail($request->id);
 
         $serviceRequest = $resource->requests()->create($data);
+
+       /*  Notification::make()
+        ->title('يريد العميل ' . $request->name . ' طلب خدمة' . $resource->name)
+        ->actions([
+            Action::make('view')
+                ->label('عرض الطلب')
+                ->button()
+                ->url(function (){
+                    return route('filament.admin.resources.service-requests.index');
+                })
+                ->markAsRead()
+
+        ])
+        // ->broadcast(User::role('admin')->first());
+        ->sendToDatabase(User::role('admin')->first());
+
+    event(new DatabaseNotificationsSent(User::role('admin')->first())); */
+
+
 
         return response()->json();
     }

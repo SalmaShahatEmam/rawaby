@@ -98,17 +98,33 @@ class ProductResource extends Resource
                             RichEditor::make('desc_ar')
                                 ->label(__('desc_ar'))
                                 ->minLength(3)
-
+                                ->maxLength(255)
                                 ->columnSpan(3)
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
 
                             RichEditor::make('desc_en')
                                 ->label(__('desc_en'))
                                 ->minLength(3)
-
+                                ->maxLength(255)
                                 ->columnSpan(3)
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
                         ]),
 
@@ -127,7 +143,9 @@ class ProductResource extends Resource
                                 ->preserveFilenames()
                                 ->reorderable()
 
-                                ->required(),
+                                ->required()
+                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp']) // Restrict to specific image MIME types
+                                 ->maxFiles(1),
                         ]),
 
 
@@ -140,17 +158,34 @@ class ProductResource extends Resource
                             RichEditor::make('advantages_ar')
                                 ->label(__('advantage in arabic'))
                                 ->minLength(3)
+                                ->maxLength(1500)
 
                                 ->columnSpan(3)
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
 
                             RichEditor::make('advantages_en')
                                 ->label(__('advantage in english'))
                                 ->minLength(3)
-
+                                ->maxLength(1500)
                                 ->columnSpan(3)
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
                         ]),
 
@@ -164,17 +199,35 @@ class ProductResource extends Resource
                             RichEditor::make('feature_ar')
                                 ->label(__('feature in arabic'))
                                 ->minLength(3)
+                                ->maxLength(1500)
 
                                 ->columnSpan(3)
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
 
                             RichEditor::make('feature_en')
                                 ->label(__('feature in english'))
                                 ->minLength(3)
+                                ->maxLength(1500)
 
                                 ->columnSpan(3)
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
                         ]),
 
@@ -187,17 +240,35 @@ class ProductResource extends Resource
                             RichEditor::make('applications_ar')
                                 ->label(__('applications in arabic'))
                                 ->minLength(3)
+                                ->maxLength(1500)
 
                                 ->columnSpan(3)
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
 
                             RichEditor::make('applications_en')
                                 ->label(__('applications in english'))
                                 ->minLength(3)
+                                ->maxLength(1500)
 
                                 ->columnSpan(3)
-                                ->required(),
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                    'table',
+                                    'italic',
+
+
+                                ]),
 
                         ]),
                 ]),

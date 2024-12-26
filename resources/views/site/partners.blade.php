@@ -9,23 +9,15 @@
     <x-sub-header :name="$name" />
     <section class="partners-section">
         <div class="main-container">
-            <h2> تعرف على شركاء نجاحنا  </h2>
+            <h2>{{ __("تعرف على شركاء نجاحنا") }} </h2>
             <div class="all-partners">
-                <div class="img"> <img src="images/part-4.png" alt=""> </div>
-                <div class="img"> <img src="images/part-5.png" alt=""> </div>
-                <div class="img"> <img src="images/part-3.png" alt=""> </div>
-                <div class="img"> <img src="images/part-2.png" alt=""> </div>
-                <div class="img"> <img src="images/part-1.png" alt=""> </div>
-                <div class="img"> <img src="images/part-5.png" alt=""> </div>
-                <div class="img"> <img src="images/part-3.png" alt=""> </div>
-                <div class="img"> <img src="images/part-4.png" alt=""> </div>
-                <div class="img"> <img src="images/part-3.png" alt=""> </div>
-                <div class="img"> <img src="images/part-1.png" alt=""> </div>
-                <div class="img"> <img src="images/part-4.png" alt=""> </div>
-                <div class="img"> <img src="images/part-2.png" alt=""> </div>
-                <div class="img"> <img src="images/part-5.png" alt=""> </div>
-                <div class="img"> <img src="images/part-1.png" alt=""> </div>
-                <div class="img"> <img src="images/part-2.png" alt=""> </div>
+                @foreach ($partners as $partner)
+                    <div class="partner">
+                        <img src="{{ $partner->image_path }}" alt="">
+                    </div>
+
+                @endforeach
+
             </div>
         </div>
      </section>

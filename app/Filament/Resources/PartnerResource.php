@@ -26,7 +26,7 @@ class PartnerResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Sliders , Team and Partners Data');
+        return __('Partners Data');
     }
     public static function getModelLabel(): string
     {
@@ -74,7 +74,7 @@ class PartnerResource extends Resource
     {
         return $table
             ->modifyQueryUsing(function (Builder $query) {
-                return $query->latest('created_at');
+                return $query->latest('created_at')->where('deleted_at', null);
             })
             ->columns([
                 ImageColumn::make('image')

@@ -26,7 +26,6 @@ class Product extends Model
         'feature_ar'
     ];
 
-
     public function getNameAttribute()
     {
         return $this['name_' . app()->getLocale()];

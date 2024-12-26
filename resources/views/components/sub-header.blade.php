@@ -1,3 +1,4 @@
+
 <section class="sub-header main-container">
     <a href="/">
       <div class="icon">
@@ -27,4 +28,5 @@
       <span> {{ __('Main') }}</span>
     </a>
     <p> {{ $name }}  </p>
+
   </section>

@@ -40,10 +40,7 @@ Route::get('/run-queue',function(){
 
 } ); */
 
-/* Route::post('/toggle-language', function (Request $request) {
-
-
-    $lng = app()->getLocale();
+ Route::get('/toggle-language/{lng}', function ($lng) {
 
     if($lng=='ar'){
         session()->put('lang', 'en');
@@ -52,10 +49,10 @@ Route::get('/run-queue',function(){
         session()->put('lang', 'ar');
 
     }
+    return redirect()->back();
 
-
-    return response()->json(['success' => true, 'locale' => $lng]);
-}); */
+  //  return response()->json(['success' => true, 'locale' => $lng]);
+});
 
 Route::get('/job-applications/{jobApplication}', [JobApplicationController::class, 'show'])
     ->name('job-applications.show');

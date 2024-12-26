@@ -1,0 +1,97 @@
+body{
+    direction: ltr;
+    text-align: left;
+}
+
+.production-lines .production-img{
+    text-align: right;
+}
+
+.news-card h4,
+section.news-section p,
+.dropdown-content a{
+    text-align: left;
+    direction: ltr;
+}
+
+.questions-common-conatiner .accordion-button::after {
+    right: 20px;
+    left: unset;
+}
+
+.contatc-us-form form input,
+.contatc-us-form form textarea,
+footer form input{
+    padding-right: 0px;
+    padding-left: 10px;
+}
+
+
+.contact-us-info h2{
+    padding-right: 0;
+    padding-left: 20px;
+}
+
+footer form input{
+
+    border-radius:10px 0px 0px 10px;
+
+}
+
+footer form button {
+    border-radius: 0px 10px 10px 0px
+}
+
+.sub-header p::before {
+    right: 0;
+    left: -10px;
+}
+
+.capction-icon-container .capction-icon .hummer{
+    direction: rtl;
+}
+
+.news-page .relative.z-0.inline-flex.shadow-sm.rounded-md{
+    direction: rtl;
+}
+
+
+.jop-details-page .jop-details-img{
+    right: 10%;
+    left: unset;
+}
+
+.our-prev-projects-text {
+    direction: ltr;
+}
+
+
+.project-links .item-link {
+
+    padding-right: 0px;
+    padding-left: 20px;
+
+}
+
+
+
+.project-links h2 {
+    margin-right: 0px;
+    margin-left: 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

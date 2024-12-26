@@ -7,22 +7,23 @@ use Filament\Tables;
 use App\Mail\AlphaMail;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Filament\Actions\Action;
 use App\Models\ServiceRequest;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Mail;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
+use Filament\Infolists\Components\Grid;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\TextEntry;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ServiceRequestResource\Pages;
 use App\Filament\Resources\ServiceRequestResource\RelationManagers;
-use Filament\Infolists\Infolist;
-use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Components\Grid;
 
 class ServiceRequestResource extends Resource
 {
@@ -58,11 +59,18 @@ class ServiceRequestResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        ->modifyQueryUsing(function (Builder $query) {
+            return $query->latest('created_at');
+        })
             ->columns([
                 TextColumn::make('name')
-                    ->label(__("name")),
+                    ->label(__("name"))
+                    ->searchable()
+                    ,
                 TextColumn::make("phone")
-                    ->label(__('phone')),
+                    ->label(__('phone'))
+                    ->searchable()
+                    ,
                 /*                     TextColumn::make("requestable_type")
                     ->label(__('Type'))
                     ->formatStateUsing(function ($state) {
@@ -92,8 +100,10 @@ class ServiceRequestResource extends Resource
                         },
                     ]),
  */
-                BadgeColumn::make("requestable_type")
+                TextColumn::make("requestable_type")
+                ->badge()
                     ->label(__('Type'))
+
                     ->colors([
                         'success' => 'App\Models\Product',  // Green
                         'warning' => 'App\Models\Service',  // Yellow
@@ -107,13 +117,16 @@ class ServiceRequestResource extends Resource
                             'App\Models\Project' => __('a Project'),
                             default => __('Unknown'),
                         };
-                    }),
+                    })
+                 //   ->searchable()
+                    ,
                 TextColumn::make('requestable.name')
                     ->label(__('name of service')),
                     TextColumn::make('is_replay')
                     ->label(__('isReply'))
+                    ->default('not service')
                     ->searchable()
-                    ->sortable()
+                   ->sortable()
                     ->formatStateUsing(function (ServiceRequest $record) {
                         return $record->is_replay == 1 ? __('is replied') : __('not replied');
                     })
@@ -125,9 +138,6 @@ class ServiceRequestResource extends Resource
                         }
                     })
                     ->badge(),
-
-
-
             ])
             ->filters([
                 SelectFilter::make('is_replay')
@@ -144,7 +154,8 @@ class ServiceRequestResource extends Resource
                     'App\Models\Product' => __('a Product'),
                     'App\Models\Service' => __('a Service'),
                     'App\Models\Project' => __('a Project'),
-                ])
+                ]),
+              
             ])
             ->actions([
                // Tables\Actions\EditAction::make(),
@@ -165,7 +176,7 @@ class ServiceRequestResource extends Resource
                     ])
                     ->action(function (ServiceRequest $ServiceOrder, array $data) {
 
-                        Mail::to($ServiceOrder->email)->send(new AlphaMail($data));
+                      //  Mail::to($ServiceOrder->email)->send(new AlphaMail($data));
 
 
                         $ServiceOrder->is_replay = 1;
@@ -201,7 +212,7 @@ class ServiceRequestResource extends Resource
         return [
             'index' => Pages\ListServiceRequests::route('/'),
             //  'create' => Pages\CreateServiceRequest::route('/create'),
-            'edit' => Pages\EditServiceRequest::route('/{record}/edit'),
+            //'edit' => Pages\EditServiceRequest::route('/{record}/edit'),
         ];
     }
 
@@ -231,7 +242,7 @@ class ServiceRequestResource extends Resource
                             TextEntry::make('company_name')
                             ->label(__('company_name')),
 
-                        TextEntry::make('service_name_' . app()->getLocale())
+                        TextEntry::make('requestable.name' )
                             ->label(__('Service Name')),
 
                         TextEntry::make('message')

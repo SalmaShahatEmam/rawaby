@@ -9,6 +9,8 @@ use Filament\Tables\Table;
 use App\Models\JobApplication;
 use App\Models\JobApplications;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -50,15 +52,26 @@ class JobApplicationsResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        ->modifyQueryUsing(function (Builder $query) {
+            return $query->latest('created_at');
+        })
             ->columns([
                 TextColumn::make("name")
-                ->label(__('name')),
+                ->label(__('name'))
+                ->searchable()
+                ,
                 TextColumn::make("email")
-                ->label(__('email')),
+                ->label(__('email'))
+                ->searchable()
+                ,
                 TextColumn::make("phone")
-                ->label(__('phone')),
+                ->label(__('phone'))
+                ->searchable()
+                ,
                 TextColumn::make("job.title")
-                ->label(__('Job')),
+                ->label(__('Job'))
+                ->searchable()
+                ,
                 TextColumn::make('resume')
                     ->label(__('ملف الوثيقة'))
                     ->formatStateUsing(function (string $state) {
@@ -66,7 +79,6 @@ class JobApplicationsResource extends Resource
                         return $state ? __('السيرة الذاتية') : 'لايوجد ملف';
                     })
                     ->url(fn($record) => $record->file_path, shouldOpenInNewTab: true)
-                    ->searchable()
                     ->sortable(),
 
             ])
@@ -74,7 +86,34 @@ class JobApplicationsResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+            //    Tables\Actions\EditAction::make(),
+            Tables\Actions\ActionGroup::make([
+
+               // Tables\Actions\ViewAction::make(),
+                Action::make('Send Reply')
+                    ->label(__('Send Reply'))
+                    ->form([
+                        Textarea::make('reply')
+                            ->label(__('Reply'))
+                            ->minLength(3)
+
+                            ->columnSpan(3)
+                            ->rows(5)
+                            ->required(),
+                    ])
+                    ->action(function (JobApplication $تobApplication, array $data) {
+
+                      //  Mail::to($ServiceOrder->email)->send(new AlphaMail($data));
+
+
+                        Notification::make()
+                            ->title(__('Reply Sent Successfully'))
+                            ->success()
+                            ->icon('heroicon-o-inbox')
+                            ->iconColor('success')
+                            ->send();
+                    })->icon('heroicon-o-chat-bubble-left-right')
+            ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -97,7 +136,7 @@ class JobApplicationsResource extends Resource
         return [
             'index' => Pages\ListJobApplications::route('/'),
             'create' => Pages\CreateJobApplications::route('/create'),
-            'edit' => Pages\EditJobApplications::route('/{record}/edit'),
+         //   'edit' => Pages\EditJobApplications::route('/{record}/edit'),
         ];
     }
 }

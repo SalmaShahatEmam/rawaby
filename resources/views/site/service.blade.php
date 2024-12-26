@@ -28,7 +28,7 @@
                <div class="img"> <img src="{{ asset('site') }}/images/diagram.png" alt=""> </div>
                <div class="txt">
                <h3> {{ __('service steps') }}</h3>
-               <p> {!! $service->service_step !!} </p>
+               <p>{!! nl2br(e($service->service_step)) !!} </p>
 
                </div>
           </div>
@@ -37,7 +37,7 @@
                <div class="img"> <img src="{{ asset('site') }}/images/star.png" alt=""> </div>
                <div class="txt">
                <h3>  {{ __('advantages') }}</h3>
-               <p> {!! $service->advantage  !!} </p>
+               <p>{!! nl2br(e( $service->advantage )) !!} </p>
 
                </div>
        </div>
@@ -48,6 +48,6 @@
 
 <div>
      <p class="link-txt"> {{ __('We offer a range of services that meet your needs accurately and efficiently, including advanced hydraulic system services, designed to provide high performance and lasting reliability.') }} </p>
-     <a href="{{  route('site.request',["type"=>"services" ,"slug"=>$service->slug])}}" class="link-contact-us">   أطلب الآن   </a>
+     <a href="{{  route('site.request',["type"=>"services" ,"slug"=>$service->slug])}}" class="link-contact-us">  {{  __('Order Now')}} </a>
 </div>
 @endsection

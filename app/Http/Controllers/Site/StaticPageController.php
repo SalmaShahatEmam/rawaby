@@ -33,7 +33,7 @@ class StaticPageController extends Controller
     public function partners()
     {
         $partners = Partner::all();
-        return view('site.partners.index', compact('partners'));
+        return view('site.partners', compact('partners'));
     }
 
     public function regulations()
