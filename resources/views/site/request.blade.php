@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('Home') .'|'.getSetting('site_name_'.app()->getLocale()))
+@section('title', __('Request') .'|'.getSetting('site_name_'.app()->getLocale()))
 
 @section('content')
 
@@ -79,10 +79,14 @@
               </div>
           </div>
           <div class="col-lg-6 ctm-n-padd">
-              <div class="contact-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2071.45405928431!2d31.406552246384464!3d31.05277816074429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1733385696129!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
+
+                <div class="contact-map" id="map">
+                <input type="hidden" name="lat" value="{{ getSetting("location")['lat'] }}">
+                <input type="hidden" name="lng" value="{{getSetting("location")['lng'] }}">
+                </div>
           </div>
+
+
         </div>
 
     </div>
@@ -91,13 +95,16 @@
  <section class="contact-details">
     <div class="main-container">
 
-        <a href="" class="contact-details-item">
+
+
+       <a class="contact-details-item" href="{{ 'https://www.google.com/maps/search/?api=1&query='.getSetting('location')['lat'].','.getSetting('location')['lng'] }}" target="_blank">
+
             <div class="item-icon">
                 <img src="{{ asset('site') }}/images/location-pin-alt-1_svgrepo.com.svg" alt="" />
               </div>
             <div class="item-info">
                 <h3>{{ __('Our Location') }}</h3>
-                <p>{{ __('Industrial Area - Street 10, City, Country') }}</p>
+                <p>{{ getSetting('address') }}</p>
               </div>
         </a>
 

@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('Home') . '|' . getSetting('site_name_' . app()->getLocale()))
+@section('title', __('Product Lines') . '|' . getSetting('site_name_' . app()->getLocale()))
 
 @section('content')
 

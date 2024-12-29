@@ -22,7 +22,7 @@
 
                         <h4> {{  $blog->name }} </h4>
                         <p>
-                            {!! $blog->desc !!}
+                            {!! \Illuminate\Support\Str::limit($blog->desc, 200) !!}
                         </p>
 
                         <div class="news-card-links">
@@ -59,7 +59,7 @@
                                         <path d="M7.3476 13.4537H7.35484" stroke="#666666" stroke-width="1.61122" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
 
-                                    <span>{{ date("F j, Y",(int)$blog->created_at)}}</span>
+                                    <span>{{$blog->created_at}}</span>
 
                                 </div>
                             </div>

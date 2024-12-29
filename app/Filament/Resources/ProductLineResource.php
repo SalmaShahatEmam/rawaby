@@ -89,7 +89,7 @@ class ProductLineResource extends Resource
                             RichEditor::make('desc_ar')
                                 ->label(__('desc_ar'))
                                 ->minLength(3)
-                                ->maxLength(1500)
+                                ->maxLength(255)
                                 ->disableToolbarButtons([
                                     'attachFiles',
                                     'codeBlock',
@@ -105,7 +105,7 @@ class ProductLineResource extends Resource
                             RichEditor::make('desc_en')
                                 ->label(__('desc_en'))
                                 ->minLength(3)
-                                ->maxLength(1500)
+                                ->maxLength(255)
                                 ->disableToolbarButtons([
                                     'attachFiles',
                                     'codeBlock',

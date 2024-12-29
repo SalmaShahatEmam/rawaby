@@ -93,7 +93,7 @@ class LiberaryResource extends Resource
                             Textarea::make('desc_ar')
                                 ->label(__('desciption in arabic'))
                                 ->minLength(3)
-                                ->maxLength(1500)
+                                ->maxLength(250)
                                 ->columnSpan(3)
                                 ->rows(5)
                                 ->required(),
@@ -102,7 +102,7 @@ class LiberaryResource extends Resource
                             Textarea::make('desc_en')
                                 ->label(__('desciption in english'))
                                 ->minLength(3)
-                                ->maxLength(1500)
+                                ->maxLength(250)
 
                                 ->columnSpan(3)
                                 ->rows(5)

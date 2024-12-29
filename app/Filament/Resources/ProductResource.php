@@ -126,6 +126,7 @@ class ProductResource extends Resource
 
                                 ]),
 
+
                         ]),
 
                     Section::make(__('Images Information'))
@@ -145,11 +146,11 @@ class ProductResource extends Resource
 
                                 ->required()
                                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp']) // Restrict to specific image MIME types
-                                 ->maxFiles(1),
+                                ->maxFiles(1),
                         ]),
 
 
-                        Section::make(__('Advantages Information'))
+                    Section::make(__('Advantages Information'))
                         ->description(__('This is the Advantages information about the Product.'))
                         ->collapsible(true)
 
@@ -190,7 +191,7 @@ class ProductResource extends Resource
                         ]),
 
 
-                        Section::make(__('Feature Information'))
+                    Section::make(__('Feature Information'))
                         ->description(__('This is the feature information about the Product.'))
                         ->collapsible(true)
 
@@ -231,7 +232,7 @@ class ProductResource extends Resource
 
                         ]),
 
-                        Section::make(__('applications Information'))
+                    Section::make(__('applications Information'))
                         ->description(__('This is the applications information about the Product.'))
                         ->collapsible(true)
 

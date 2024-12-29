@@ -32,7 +32,7 @@ $parent =__("Blogs");
                                     </svg>
 
 
-                                <span> {{ date("F j, Y",(int)$blog->created_at)}}</span>
+                                <span> {{ $blog->created_at}}</span>
 
                             </div>
                         </div>

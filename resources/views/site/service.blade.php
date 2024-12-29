@@ -48,6 +48,6 @@
 
 <div>
      <p class="link-txt"> {{ __('We offer a range of services that meet your needs accurately and efficiently, including advanced hydraulic system services, designed to provide high performance and lasting reliability.') }} </p>
-     <a href="{{  route('site.request',["type"=>"services" ,"slug"=>$service->slug])}}" class="link-contact-us">  {{  __('Order Now')}} </a>
+     <a href="{{  route('site.request',["type"=>"services" ,"slug"=>$service->slug])}}" class="link-contact-us">  {{  __('أطلب ألان')}} </a>
 </div>
 @endsection

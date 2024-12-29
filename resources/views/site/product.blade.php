@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('Home') . '|' . getSetting('site_name_' . app()->getLocale()))
+@section('title', $product->name. '|' . getSetting('site_name_' . app()->getLocale()))
 
 @section('content')
 
@@ -55,7 +55,7 @@
 
     <div>
         <p class="link-txt">{{ __('We offer a wide range of products designed to meet your needs with precision and efficiency, focusing on achieving the highest levels of performance and reliability in all our solutions.') }}</p>
-        <a href="{{ route('site.request', ['type' => 'products', 'slug' => $product->slug]) }}" class="link-contact-us"> {{ __('Order Now') }} </a>
+        <a href="{{ route('site.request', ['type' => 'products', 'slug' => $product->slug]) }}" class="link-contact-us">  {{  __('أطلب ألان')}} </a>
     </div>
 
     <section class="our-products">

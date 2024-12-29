@@ -31,7 +31,7 @@
                                 <h3>  {{ $job->section }}</h3>
                                 <div class="work-time">
                                     <img src="{{ asset('site') }}/images/clock.svg" alt="">
-                                    <p>  {{$job->hours}}</p>
+                                    <p>  {{$job->hours . " ".__("Hour Daily") }}</p>
                                 </div>
                                 <div class="experiecnc">
                                     <img src="{{ asset('site') }}/images/bag-exp.svg" alt="">

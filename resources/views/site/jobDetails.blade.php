@@ -22,7 +22,7 @@
                     <div class="main-description">
                         <div class="time sub-main-description">
                             <img src="{{ asset('site') }}/images/clock.svg" alt="">
-                            <p>{{ $job->hours }}</p>
+                            <p>{{ $job->hours . " ".__("Hour Daily") }}</p>
                         </div>
                         <div class="experience sub-main-description">
                             <img src="{{ asset('site') }}/images/bag-exp.svg" alt="">

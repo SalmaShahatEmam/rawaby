@@ -36,11 +36,12 @@
                             <a href="{{ route('site.liberary') }}"> {{ __('Media Library') }} </a>
                         </div>
 
+
                         <div class="links-footer-item">
                             <h4>{{ __('Follow Us') }}</h4>
-                            <a href="/"> {{ __('Facebook') }} </a>
-                            <a href="/"> {{ __('LinkedIn') }} </a>
-                            <a href="/"> {{ __('Instagram') }} </a>
+                            <a href="{{ getSetting('facebook') }}"> {{ __('Facebook') }} </a>
+                            <a href="{{ getSetting('linkedin') }}"> {{ __('LinkedIn') }} </a>
+                            <a href="{{ getSetting('instagram') }}"> {{ __('Instagram') }} </a>
                         </div>
 
                     </div>
@@ -53,8 +54,11 @@
 
                     <form id="blogEmail" action="{{ route('site.blog.user') }}" method="post">
                         @csrf
-                        <input type="text" placeholder="{{ __('Enter your email') }}" name="email" />
-                        <span class="email-errorq error-text text-danger"></span>
+                        <div>
+
+                            <input type="text" placeholder="{{ __('Enter your email') }}" name="email" />
+                            <span class="email-errorq error-text text-danger"></span>
+                        </div>
                         <button type="submit">{{ __('Send') }}</button>
                     </form>
                 </div>
@@ -108,7 +112,7 @@
                             aria-expanded="false">
                             AR
                         </button>
-                      
+
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item"  @if(app()->getLocale() != "en") class=" dropdown-item active-lang" @endif href="/toggle-language/ar">AR</a></li>
                             <li><a class="dropdown-item"  @if(app()->getLocale() != "en") class="dropdown-item active-lang" @endif href="/toggle-language/en">EN</a></li>
@@ -122,6 +126,7 @@
 </div>
 </main>
 
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&loading=async&callback=initAutocomplete"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
@@ -129,6 +134,13 @@
 <script src="{{ asset('site') }}/js/jquery.js"></script>
 <script src="{{ asset('site') }}/js/videos.js"></script>
 
+<script>
+  AOS.init(
+    {
+      once: true,
+    }
+  );
+</script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{{ asset('site') }}/js/custome.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -202,11 +214,9 @@
                     $('#service-offers').empty();
                     $('#service-offers').append(
 
-`<option value="">اختر</option>`
+                        `<option value="">اختر</option>`
 );
                     $.each(response.result, function(key, element) {
-                     //   console.log(element)
-
                             $('#service-offers').append(
 
                                 `<option value="${element.id}">${lang == "ar" ? element.name_ar : element.name_en }</option>`
@@ -365,6 +375,37 @@
             });
         });
     });
+</script>
+<script>
+    function initAutocomplete() {
+      let lat = parseFloat($("input[name='lat']").val());
+      let lng = parseFloat($("input[name='lng']").val());
+      let address = document.getElementById("map").getAttribute("data-address");
+
+      const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: lat, lng: lng },
+          zoom: 12,
+          mapTypeId: "roadmap",
+      });
+
+      let markers = [];
+
+      // Assuming you have a valid place object with name and geometry properties
+      let place = {
+          name: address,
+          geometry: {
+              location: { lat: lat, lng: lng }
+          }
+      };
+
+      let marker = new google.maps.Marker({
+          map: map,
+          title: place.name,
+          position: place.geometry.location,
+      });
+
+      markers.push(marker);
+  }
 </script>
 
 </body>

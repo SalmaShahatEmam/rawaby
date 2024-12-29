@@ -40,19 +40,20 @@ class ServiceApplicationRequest extends FormRequest
 
 
     public function messages(): array
-{
-    return [
-        "name.required" => "الاسم مطلوب.",
-        "email.required" => "البريد الالكتروني مطلوب.",
-        "email.email" => "يرجى إدخال بريد إلكتروني صالح.",
-        "type.required" => "نوع الخدمة مطلوب.",
-        "id.required" => "الرجاء اختيار خدمة.",
-        "phone.required" => "رقم الهاتف مطلوب.",
-        "country.required" => "الدولة مطلوبة.",
-        "company_name.required" => "اسم الشركة مطلوب.",
-        "job_title.required" => "الوظيفة مطلوبة.",
-        "message.required" => "الرسالة مطلوبة."
-    ];
-}
+    {
+        return [
+            "name.required" => __("The name is required."),
+            "email.required" => __("The email is required."),
+            "email.email" => __("Please enter a valid email address."),
+            "type.required" => __("The service type is required."),
+            "id.required" => __("Please select a service."),
+            "phone.required" => __("The phone number is required."),
+            "country.required" => __("The country is required."),
+            "company_name.required" => __("The company name is required."),
+            "job_title.required" => __("The job title is required."),
+            "message.required" => __("The message is required."),
+        ];
+    }
+    
 
 }

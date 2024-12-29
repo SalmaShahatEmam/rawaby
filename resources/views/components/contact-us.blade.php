@@ -51,11 +51,12 @@
                           </div>
                      </a>
 
-                     <a href="#" class="contact-item">
+                     <a class="contact-item" href="{{ 'https://www.google.com/maps/search/?api=1&query='.getSetting('location')['lat'].','.getSetting('location')['lng'] }}" target="_blank">
+
                           <div class="icon"> <i class="fa-solid fa-location-dot"></i> </div>
                           <div class="text">
                                 <p> {{ __('location') }} </p>
-                                <p class="descrip"> {{ __('location_description') }} </p>
+                                <p class="descrip"> {{ getSetting('address') }} </p>
                           </div>
                      </a>
                 </div>

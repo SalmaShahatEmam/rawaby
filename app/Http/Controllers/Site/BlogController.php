@@ -11,7 +11,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::paginate(1);
+        $blogs = Blog::paginate(2);
         $other_blogs = Blog::take(3)->get();
 
         return view('site.news', compact('blogs', 'other_blogs'));
