@@ -27,6 +27,11 @@
 
                         <div class="news-card-links">
                           <a href="{{  route('site.blogs.show',$blog->slug) }}">  {{ __("تفاصيل") }}  </a>
+                          <div class="date">
+                                <img src="{{ asset('site') }}/images/calendar-2.png" alt="">
+                                <p>{{ $blog->created_at}}</p>
+                               
+                            </div>
                         </div>
                     </div>
                     @endforeach

@@ -11,8 +11,8 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::paginate(2);
-        $other_blogs = Blog::take(3)->get();
+        $blogs = Blog::orderBy('id', 'DESC')->paginate(2);
+        $other_blogs = Blog::orderBy('id', 'DESC')->take(4)->get();
 
         return view('site.news', compact('blogs', 'other_blogs'));
     }

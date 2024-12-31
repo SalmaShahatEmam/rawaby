@@ -1,6 +1,6 @@
 
 @extends('site.layouts.app')
-@section('title', __('الرئسية') .'|'.getSetting('site_name_'.app()->getLocale()))
+@section('title',  $service->name.'|'.getSetting('site_name_'.app()->getLocale()))
 
 @section('content')
 
@@ -28,7 +28,8 @@
                <div class="img"> <img src="{{ asset('site') }}/images/diagram.png" alt=""> </div>
                <div class="txt">
                <h3> {{ __('service steps') }}</h3>
-               <p>{!! nl2br(e($service->service_step)) !!} </p>
+
+               <p>{!! $service->service_step !!} </p>
 
                </div>
           </div>
@@ -37,7 +38,7 @@
                <div class="img"> <img src="{{ asset('site') }}/images/star.png" alt=""> </div>
                <div class="txt">
                <h3>  {{ __('advantages') }}</h3>
-               <p>{!! nl2br(e( $service->advantage )) !!} </p>
+               <p>{!! $service->advantage !!} </p>
 
                </div>
        </div>

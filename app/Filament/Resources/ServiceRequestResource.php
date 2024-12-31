@@ -121,7 +121,9 @@ class ServiceRequestResource extends Resource
                  //   ->searchable()
                     ,
                 TextColumn::make('requestable.name')
-                    ->label(__('name of service')),
+                    ->label(__('name of service'))
+                    ->searchable(),
+
                     TextColumn::make('is_replay')
                     ->label(__('isReply'))
                     ->default('not service')
@@ -155,7 +157,7 @@ class ServiceRequestResource extends Resource
                     'App\Models\Service' => __('a Service'),
                     'App\Models\Project' => __('a Project'),
                 ]),
-              
+
             ])
             ->actions([
                // Tables\Actions\EditAction::make(),
@@ -176,7 +178,7 @@ class ServiceRequestResource extends Resource
                     ])
                     ->action(function (ServiceRequest $ServiceOrder, array $data) {
 
-                      //  Mail::to($ServiceOrder->email)->send(new AlphaMail($data));
+                        Mail::to($ServiceOrder->email)->send(new AlphaMail($data));
 
 
                         $ServiceOrder->is_replay = 1;

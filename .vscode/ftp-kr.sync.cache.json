@@ -8,9 +8,9 @@
     },
     ".env": {
       "type": "-",
-      "size": 1296,
+      "size": 1292,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     ".env.example": {
       "type": "-",
@@ -443,7 +443,7 @@
     },
     "error_log": {
       "type": "-",
-      "size": 8140,
+      "size": 12210,
       "lmtime": 0,
       "modified": true
     },

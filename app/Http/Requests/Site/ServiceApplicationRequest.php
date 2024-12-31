@@ -31,10 +31,10 @@ class ServiceApplicationRequest extends FormRequest
                 "digits_between:9,15", // Between 9 and 15 digits
                 "regex:/^\d+$/", // Only numeric values
             ],
-            "country"=>["required" , "regex:/^[\p{Arabic}]{2,}$/u", "max:50"],
-            "company_name" =>"required|min:10|max:50",
+            "country"=>"required|min:2|max:50",
+            "company_name" =>"required|min:2|max:50",
             "job_title" =>"required",
-            "message" =>"required|min:10,|max:50"
+            "message" =>"required|min:2|max:255"
         ];
     }
 
@@ -54,6 +54,6 @@ class ServiceApplicationRequest extends FormRequest
             "message.required" => __("The message is required."),
         ];
     }
-    
+
 
 }

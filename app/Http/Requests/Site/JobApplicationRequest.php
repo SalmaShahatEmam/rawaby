@@ -37,7 +37,7 @@ class JobApplicationRequest extends FormRequest
     return [
         "name" => [
             "required",
-            "regex:/^[\p{Arabic}a-zA-Z\s]{2,}$/u", // At least two Arabic or English letters
+          //  "regex:/^[\p{Arabic}a-zA-Z\s]{2,}$/u", // At least two Arabic or English letters
             "max:50"
         ],
         "email" => [
@@ -61,7 +61,8 @@ class JobApplicationRequest extends FormRequest
         ],
         "city" => [
             "required",
-            "regex:/^[\p{Arabic}]{2,}$/u",            "max:50"
+        //    "regex:/^[\p{Arabic}]{2,}$/u",
+                        "max:50"
             // At least two Arabic letters, no numbers
         ],
     ];

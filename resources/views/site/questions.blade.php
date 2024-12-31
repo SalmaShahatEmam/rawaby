@@ -1,5 +1,5 @@
 @extends('site.layouts.app')
-@section('title', __('الرئسية') .'|'.getSetting('site_name_'.app()->getLocale()))
+@section('title', __('Common Questions') .'|'.getSetting('site_name_'.app()->getLocale()))
 
 @section('content')
 
@@ -22,11 +22,11 @@
 
                <div class="accordion-item">
                  <h2 class="accordion-header">
-                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
+                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
                     {{  $question->question}}
                    </button>
                  </h2>
-                 <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                 <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                    <div class="accordion-body">
                     {{  $question->answer}}                         </div>
                  </div>
@@ -45,11 +45,11 @@
             @foreach($questions->where('category','services') as $question)
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
                    {{  $question->question}}
                   </button>
                 </h2>
-                <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                    {{  $question->answer}}                         </div>
                 </div>
@@ -68,11 +68,11 @@
 
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
                    {{  $question->question}}
                   </button>
                 </h2>
-                <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                    {{  $question->answer}}                         </div>
                 </div>
@@ -91,11 +91,11 @@
 
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
                    {{  $question->question}}
                   </button>
                 </h2>
-                <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                    {{  $question->answer}}                         </div>
                 </div>
@@ -112,11 +112,11 @@
 
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="{{"#collapseTwo".$question->id}}" aria-expanded="false" aria-controls="collapseOne">
                    {{  $question->question}}
                   </button>
                 </h2>
-                <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div id="{{"collapseTwo".$question->id}}" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                    {{  $question->answer}}                         </div>
                 </div>

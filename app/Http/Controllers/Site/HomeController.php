@@ -193,8 +193,8 @@ class HomeController extends Controller
 
         $serviceRequest = $resource->requests()->create($data);
 
-       /*  Notification::make()
-        ->title('يريد العميل ' . $request->name . ' طلب خدمة' . $resource->name)
+         Notification::make()
+        ->title('يريد العميل ' . $serviceRequest->name . ' طلب خدمة' . $resource->name)
         ->actions([
             Action::make('view')
                 ->label('عرض الطلب')
@@ -208,7 +208,7 @@ class HomeController extends Controller
         // ->broadcast(User::role('admin')->first());
         ->sendToDatabase(User::role('admin')->first());
 
-    event(new DatabaseNotificationsSent(User::role('admin')->first())); */
+    event(new DatabaseNotificationsSent(User::role('admin')->first())); 
 
 
 

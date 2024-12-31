@@ -66,8 +66,8 @@
         </div>
 
         <div class="copy-write">
-            <h4>© 2024 {{ __('Metal Casting Limited') }} - {{ __('All rights reserved.') }}</h4>
-            <h4>{{ __('Made with love') }} <span><i class="fa fa-heart"></i></span> {{ __('at Jadara Laboratories') }}</h4>
+            <h4>&#169; 2024 {{ __('Metal Casting Limited') }} - {{ __('All rights reserved.') }}</h4>
+            <h4>{{ __('Made with love') }} <span><i class="fa fa-heart"></i></span> {{ __('at Jadara') }}</h4>
         </div>
     </div>
 </footer>
@@ -214,8 +214,8 @@
                     $('#service-offers').empty();
                     $('#service-offers').append(
 
-                        `<option value="">اختر</option>`
-);
+                    `<option value="">{{  __("Choose")}}</option>`
+                    );
                     $.each(response.result, function(key, element) {
                             $('#service-offers').append(
 
@@ -274,7 +274,7 @@
                         Swal.fire({
                             position: "top-end",
                             icon: "error",
-                            title: "حدث خطأ. حاول مرة أخرى.",
+                            title: "{{ __('Something is Wrong , Try Again Later') }}",
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -354,6 +354,17 @@
                     });
 
                     $('#applyJobs')[0].reset();
+                    const fileLabel = document.querySelector(".file-label ");
+                    const fileName = document.querySelector(".file-label p");
+                    const deleteIcon = document.querySelector(".delete-icon");
+
+                    fileName.innerHTML = "قم بإسقاط أوتحميل ملف (PDF أو DOCX)";
+                    errorFile.style.color = "red";
+                    fileLabel.classList.remove("chossen");
+                    deleteIcon.style.display =  "none";
+
+
+
                 },
                 error: function(xhr) {
                     if (xhr.status === 422) {
@@ -366,7 +377,7 @@
                         Swal.fire({
                             position: "top-end",
                             icon: "error",
-                            title: "حدث خطأ. حاول مرة أخرى.",
+                            title: "{{ __('You have successfully subscribed to the newsletter service') }}",
                             showConfirmButton: false,
                             timer: 1500
                         });

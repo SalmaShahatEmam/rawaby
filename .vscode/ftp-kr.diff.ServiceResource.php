@@ -16,7 +16,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\MarkdownEditor;
 use App\Filament\Resources\ServiceResource\Pages;
@@ -138,13 +137,8 @@ class ServiceResource extends Resource
 
 
 
-                            RichEditor::make('service_steps_ar')
+                            MarkdownEditor::make('service_steps_ar')
                                 ->label(__('advantages in arabic'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
-                                ->required()
                                 ->disableToolbarButtons([
                                     'attachFiles',
                                     'codeBlock',
@@ -156,15 +150,8 @@ class ServiceResource extends Resource
                                 ->required(),
 
 
-
-
-                                RichEditor::make('service_steps_en')
+                            MarkdownEditor::make('service_steps_en')
                                 ->label(__('advantages in english'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
-                                ->required()
                                 ->disableToolbarButtons([
                                     'attachFiles',
                                     'codeBlock',
@@ -182,13 +169,9 @@ class ServiceResource extends Resource
                         ->collapsible(true)
 
                         ->schema([
-                            RichEditor::make('advantages_ar')
+                            MarkdownEditor::make('advantages_ar')
                                 ->label(__('advantages in arabic'))
                                 ->required()
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
                                 ->disableToolbarButtons([
                                     'attachFiles',
                                     'codeBlock',
@@ -199,13 +182,8 @@ class ServiceResource extends Resource
                                 ]),
 
 
-                                RichEditor::make('advantages_en')
+                            MarkdownEditor::make('advantages_en')
                                 ->label(__('advantages in english'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
-                  
                                 ->required() ->disableToolbarButtons([
                                     'attachFiles',
                                     'codeBlock',

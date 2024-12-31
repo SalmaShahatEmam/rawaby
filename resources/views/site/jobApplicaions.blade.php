@@ -61,7 +61,7 @@
                 <div class="form-input file">
 
                     <label for="">{{ __('Upload Resume *') }}</label>
-                    <input id="file-input" type="file" name="resume" >
+                    <input id="file-input" type="file" name="resume" accept=".pdf,.docx">
                     <label  class="file-label " for="file-input">
                       <div class="file-text">
                         <img src="{{ asset('site') }}/images/pdf-file-2_svgrepo.com.svg" alt="">

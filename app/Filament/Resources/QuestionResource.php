@@ -44,27 +44,31 @@ class QuestionResource extends Resource
                 TextInput::make('question_ar')
                 ->label(__('question in Arabic'))
                 ->required()
-                ->autofocus(),
+                ->autofocus()
+                ->maxLength(255),
 
                 TextInput::make('answer_ar')
                 ->label(__('answer in Arabic'))
                 ->required()
-                ->autofocus(),
+                ->autofocus()
+                ->maxLength(255),
 
                 TextInput::make('question_en')
                 ->label(__('question in English'))
                 ->required()
-                ->autofocus(),
+                ->autofocus()
+                ->maxLength(255),
 
                 TextInput::make('answer_en')
                 ->label(__('answer in English'))
                 ->required()
-                ->autofocus(),
+                ->autofocus()
+                ->maxLength(255),
                 Select::make('category')
                 ->label(__('category'))
     ->options([
         'all' => __('all'),
-        'services' => __('services , products , products lines'),
+        'services' => __('services , products , production lines'),
         'jobs' => __('jobs'),
         'contact'=>__('contacts and parteners'),
         'support' =>__('technical support')
@@ -77,13 +81,25 @@ class QuestionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('question_'.app()->getLocale())
-                ->label(__('question')),
+                ->label(__('question'))
+                ->words(10)
+                ,
 
                 TextColumn::make('answer_'.app()->getLocale())
                 ->label(__('answer'))
-                ->words(10),
+                ->words(9),
                 TextColumn::make('category')
-                ->label(__('category')),
+                ->label(__('category'))
+                ->formatStateUsing(function (string $state) {
+                    return match ($state) {
+                        'all' => __('all'),
+                        'services' => __('services , products , production lines'),
+                        'jobs' => __('jobs'),
+                        'contact'=>__('contacts and parteners'),
+                        'support' =>__('technical support'),
+                        default => __('Unknown'),
+                    };
+                }),
 
             ])
             ->filters([

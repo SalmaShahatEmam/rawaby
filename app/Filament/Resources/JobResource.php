@@ -41,197 +41,187 @@ class JobResource extends Resource
     {
 
         return $form
-        ->schema([
-            TextInput::make('title_ar')
-                ->label(__('title in arabic'))
-                ->required()
-                ->autofocus()
-                ->maxLength(255) // Sets the maximum character limit
+            ->schema([
+                TextInput::make('title_ar')
+                    ->label(__('title in arabic'))
+                    ->required()
+                    ->autofocus()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
 
                 TextInput::make('title_en')
-                ->required()
-                ->label(__('title_en'))
-                ->minLength(3)
-                ->maxLength(255)
-                ->unique(Job::class, 'title_en', ignoreRecord: true)
+                    ->required()
+                    ->label(__('title_en'))
+                    ->minLength(3)
+                    ->maxLength(255)
+                    ->unique(Job::class, 'title_en', ignoreRecord: true)
 
-                ->autofocus()
-                ->lazy()
-                ->afterStateUpdated(function (Set $set, ?string $state) {
-                    $set('slug', str()->slug($state));
-                }),
-            TextInput::make('slug')
-                ->required()
+                    ->autofocus()
+                    ->lazy()
+                    ->afterStateUpdated(function (Set $set, ?string $state) {
+                        $set('slug', str()->slug($state));
+                    }),
+                TextInput::make('slug')
+                    ->required()
+                    ->columnSpan('full')
 
-                ->unique(Job::class, 'slug', ignoreRecord: true)
-                ->disabled()
-                ->dehydrated(),
+                    ->unique(Job::class, 'slug', ignoreRecord: true)
+                    ->disabled()
+                    ->dehydrated(),
 
                 TextInput::make('section_ar')
-                ->label(__('section in arabic'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ->label(__('section in arabic'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
-
                 TextInput::make('section_en')
-                ->label(__('section in english'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ->label(__('section in english'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
-
-
-
                 TextInput::make('hours')
-                ->label(__('hours in arabic'))
-                ->required()
-               // ->numeric()
-               ->maxLength(255) // Sets the maximum character limit
+                    ->label(__('number of working hours per day'))
+                    ->required()
+                     ->numeric()
+                    // ->max(24)
+                    // ->min(1)
+                  //  ->maxLength(255) // Sets the maximum character limit
+                    ->columnSpan('full'),
 
-
-                ->columnSpan('full'),
-
-
-
-            TextInput::make('expertise_ar')
-                ->label(__('expertise in arabic'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                TextInput::make('expertise_ar')
+                    ->label(__('expertise in arabic'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
 
 
-            TextInput::make('expertise_en')
-                ->label(__('expertise in english'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                TextInput::make('expertise_en')
+                    ->label(__('expertise in english'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
 
 
                 TextInput::make('work_type_ar')
-                ->label(__('work type in arabic'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ->label(__('work type in arabic'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
                 TextInput::make('work_type_en')
-                ->label(__('work type in english'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ->label(__('work type in english'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
 
                 MarkdownEditor::make('core_tasks_ar')
-                ->disableToolbarButtons([
-                    'attachFiles',
-                    'codeBlock',
-                    'table',
-                    'italic',
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                        'table',
+                        'italic',
 
 
-                ])
-                ->label(__('core tasks in arabic'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
-,
+                    ])
+                    ->label(__('core tasks in arabic'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
+                ,
 
                 MarkdownEditor::make('core_tasks_en')
-                ->disableToolbarButtons([
-                    'attachFiles',
-                    'codeBlock',
-                    'table',
-                    'italic',
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                        'table',
+                        'italic',
 
 
-                ])
-                ->disableToolbarButtons([
-                    'attachFiles',
-                    'codeBlock',
-                    'table',
-                    'italic',
+                    ])
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                        'table',
+                        'italic',
 
-                ])
-                ->label(__('core tasks in english'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ])
+                    ->label(__('core tasks in english'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
 
                 MarkdownEditor::make('required_skills_ar')
-                ->label(__('required skills in arabic'))
-                ->disableToolbarButtons([
-                    'attachFiles',
-                    'codeBlock',
-                    'table',
-                    'italic',
+                    ->label(__('required skills in arabic'))
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                        'table',
+                        'italic',
 
 
-                ])
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ])
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
 
                 MarkdownEditor::make('required_skills_en')
-                ->label(__('required skills in english'))
-                ->disableToolbarButtons([
-                    'attachFiles',
-                    'codeBlock',
-                    'table',
-                    'italic',
+                    ->label(__('required skills in english'))
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                        'table',
+                        'italic',
 
 
-                ])
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ])
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
                 MarkdownEditor::make('advantages_ar')
-                ->disableToolbarButtons([
-                  'attachFiles',
-                    'codeBlock',
-                    'table',
-                    'italic',
-
-
-                ])
-                ->label(__('advantages in arabic'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                        'table',
+                        'italic',
+                    ])
+                    ->label(__('advantages in arabic'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
 
                 MarkdownEditor::make('advantages_en')
-                ->disableToolbarButtons([
-                    'attachFiles',
-                    'codeBlock',
-                    'table',
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                        'table',
+                        'italic',
 
-                    'italic',
-
-
-                ])
-                ->label(__('advantages in english'))
-                ->required()
-                ->maxLength(255) // Sets the maximum character limit
+                    ])
+                    ->label(__('advantages in english'))
+                    ->required()
+                    ->maxLength(255) // Sets the maximum character limit
                 ,
 
 
 
 
-        ])
-        ->columns(2);
-
+            ])
+            ->columns(2);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-        ->modifyQueryUsing(function (Builder $query) {
-            return $query->latest('created_at');
-        })
+            ->modifyQueryUsing(function (Builder $query) {
+                return $query->latest('created_at');
+            })
             ->columns([
-            TextColumn::make('title_'.app()->getLocale())
-            ->label(__('job title')),
-            TextColumn::make('section_'.app()->getLocale())
-            ->label(__('section')),
-            TextColumn::make('hours')
-            ->label(__('job hours')),
-            TextColumn::make('expertise_'.app()->getLocale())
-            ->label(__('expertise')),
+                TextColumn::make('title_' . app()->getLocale())
+                    ->label(__('job title')),
+                TextColumn::make('section_' . app()->getLocale())
+                    ->label(__('section')),
+                TextColumn::make('hours')
+                    ->label(__('job hours')),
+                TextColumn::make('expertise_' . app()->getLocale())
+                    ->label(__('expertise')),
 
 
             ])

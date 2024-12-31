@@ -3,7 +3,7 @@
          <div class="row">
             <div class="col-lg-6 ctm-n-padd">
                 <div class="contatc-us-form">
-                       <h2> {{ __('contact_us') }} </h2>
+                       <h2> {{ __('contact us') }} </h2>
                        <form id="contactForm" action="{{ route('site.contact.request') }}" method="post">
                             <div class="row">
                                 @csrf
@@ -33,7 +33,7 @@
             </div>
             <div class="col-lg-6 ctm-n-padd">
                 <div class="contact-us-info">
-                     <h2> {{ __('contact_info') }} </h2>
+                     <h2> {{ __('contact info') }} </h2>
 
                      <a href="{{ 'mailto:'.getSetting('email') }}" class="contact-item">
                           <div class="icon"> <i class="fa-solid fa-envelope"></i> </div>
@@ -46,7 +46,7 @@
                      <a href="{{ 'tel:+'.getSetting('phone') }}" class="contact-item">
                           <div class="icon"> <i class="fa-solid fa-phone"></i> </div>
                           <div class="text">
-                                <p> {{ __('contact_number') }} </p>
+                                <p> {{ __('contact number') }} </p>
                                 <p class="descrip">{{ getSetting('phone') }} </p>
                           </div>
                      </a>
