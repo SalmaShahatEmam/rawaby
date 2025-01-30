@@ -285,7 +285,7 @@ class Settings extends SettingsPage
 
                                 Grid::make()->schema([
                                     Section::make(__('About Us Information'))
-                                        ->description(__('This is the main information about the about us.'))
+                                    //  ->description(__('This is the main information about the about us.'))
                                         ->collapsible(true)
                                         ->schema([
                                             Textarea::make('about_desc_ar')
@@ -361,7 +361,7 @@ class Settings extends SettingsPage
 
                                         ])->columns(2), */
                                     Section::make(__('vision Information'))
-                                        ->description(__('This is the main information about the review.'))
+                                   //   ->description(__('This is the main information about the review.'))
                                         ->collapsible(true)
 
                                         ->schema([
@@ -383,7 +383,7 @@ class Settings extends SettingsPage
 
                                         ])->columns(2),
                                     Section::make(__('message Information'))
-                                        ->description(__('This is the main information about the review.'))
+                                   //   ->description(__('This is the main information about the review.'))
                                         ->collapsible(true)
 
                                         ->schema([
@@ -415,7 +415,7 @@ class Settings extends SettingsPage
                                         ])->columns(2),
 
                                     Section::make(__('value Information'))
-                                        ->description(__('This is the main information about the review.'))
+                                   //   ->description(__('This is the main information about the review.'))
                                         ->collapsible(true)
 
                                         ->schema([

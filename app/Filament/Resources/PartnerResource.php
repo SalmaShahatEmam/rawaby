@@ -59,6 +59,7 @@ class PartnerResource extends Resource
                                 ->columnSpanFull()
                                 ->preserveFilenames()
                                 ->reorderable()
+                                ->image()
 
                                 ->required(),
                         ]),
@@ -103,16 +104,16 @@ class PartnerResource extends Resource
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                    Tables\Actions\RestoreAction::make(),
-                    Tables\Actions\ForceDeleteAction::make(),
+                  //  Tables\Actions\RestoreAction::make(),
+                  //  Tables\Actions\ForceDeleteAction::make(),
 
                 ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
+                //    Tables\Actions\ForceDeleteBulkAction::make(),
+                //    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }

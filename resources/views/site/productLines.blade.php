@@ -19,7 +19,7 @@
                                     <div class="mx-0 row">
                                         <div class="col-lg-6 col-md-12">
                                             <div class="production-page-card-img">
-                                                <img src="{{  $product->image_path}}" alt="">
+                                                <img class="image"  data-bs-toggle="modal" data-bs-target="#exampleModal" src="{{  $product->image_path}}" alt="">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-12">
@@ -30,7 +30,7 @@
                                                 </div>
                                                 <div class="production-page-card-content">
                                                     <h3> {{ $product->name }}</h3>
-                                                    <p>   {!! $product->desc !!}</p>
+                                                    <p> {!! str(  $product->desc)->sanitizeHtml() !!}  </p>
 
                                                 </div>
                                             </div>
@@ -53,7 +53,7 @@
                                                     <div class="mission-text">
 
                                                         <h3>{{ __('Features') }}</h3>
-                                                        <p>{!! $product->feature !!}</p>
+                                                        <p> {!! str(  $product->feature)->sanitizeHtml() !!} </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,7 +67,7 @@
                                                     <div class="mission-text">
 
                                                         <h3>{{ __('Products') }}</h3>
-                                                        <p> {!! $product->product !!}</p>
+                                                        <p>{!! str(  $product->product)->sanitizeHtml() !!}  </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -79,7 +79,7 @@
                                                     <div class="mission-text">
 
                                                         <h3>{{ __('Technical Specifications') }}</h3>
-                                                        <p>{!! $product->advantage !!}</p>
+                                                        <p> {!! str(  $product->advantage)->sanitizeHtml() !!} </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -101,4 +101,29 @@
         </div>
     </div>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-body">
+                <img src="" style="width: 100%; height: 500px; object-fit: scale-down;" id="modalimage" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+      @push('js')
+
+      <script>
+       const modalImage = document.getElementById('modalimage');
+       const images = document.querySelectorAll('.image');
+
+       images.forEach(image => {
+           image.addEventListener('click', () => {
+               modalImage.src = image.src;
+           });
+       });
+
+      </script>
+      @endpush
 @endsection

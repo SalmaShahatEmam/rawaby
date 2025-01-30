@@ -21,7 +21,9 @@ class BlogNotificationMail extends Mailable
 
     public function build()
     {
-        return $this->subject(__('New Blog Published'))
-                    ->view('mail.blogNotification');
+
+                    return $this->markdown('mail.blogNotification')
+                    ->with('data', $this->blog);
+          
     }
 }

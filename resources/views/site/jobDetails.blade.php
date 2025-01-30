@@ -41,7 +41,7 @@
                         <h3>{{ __('Core Tasks') }}</h3>
                     </div>
                     <div class="">
-                        <p>{!! nl2br(e($job->core_tasks)) !!}</p>
+                        <p>{!! str($job->core_tasks)->sanitizeHtml() !!}</p>
                     </div>
                 </div>
                 <div class="skills sub-description">
@@ -50,7 +50,7 @@
                         <h3>{{ __('Required Skills') }}</h3>
                     </div>
                     <div class="">
-                        <p>{!! nl2br(e($job->required_skills)) !!}</p>
+                        <p>{!! str($job->required_skills)->sanitizeHtml() !!}</p>
                     </div>
                 </div>
                 <div class="features sub-description">
@@ -59,7 +59,7 @@
                         <h3>{{ __('Advantages') }}</h3>
                     </div>
                     <div class="">
-                        <p>{!! nl2br(e($job->advantages)) !!}</p>
+                        <p>{!! str($job->advantages)->sanitizeHtml() !!}</p>
                     </div>
                 </div>
             </div>

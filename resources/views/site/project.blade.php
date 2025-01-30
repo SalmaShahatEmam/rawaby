@@ -69,7 +69,7 @@
                 <div class="img"> <img src="{{ asset('site') }}/images/diagram.png" alt=""> </div>
                 <div class="txt">
                 <h3> {{ __("المخرجات") }} </h3>
-                <p> {!! nl2br(e($project->product)) !!} </p>
+                <p>  {!! str($project->product)->sanitizeHtml() !!} </p>
 
                 </div>
            </div>
@@ -78,7 +78,8 @@
                 <div class="img"> <img src="{{ asset('site') }}/images/star.png" alt=""> </div>
                 <div class="txt">
                 <h3> {{ __("المميزات التقنية") }}</h3>
-                <p>{!! nl2br(e($project->feature)) !!} </p>
+                <p>{!! str($project->feature)->sanitizeHtml() !!} </p>
+
                </div>
         </div>
 
@@ -86,7 +87,7 @@
                 <div class="img"> <img src="{{ asset('site') }}/images/target-result.png" alt=""> </div>
                 <div class="txt">
                 <h3> {{ __("الفئات المستهدفة") }}</h3>
-                <p> {!!$project->target !!} </p>
+                <p>{!! str($project->target)->sanitizeHtml() !!} </p>
                 </div>
         </div>
    </div>

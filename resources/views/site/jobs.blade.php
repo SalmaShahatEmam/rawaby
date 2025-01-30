@@ -11,7 +11,7 @@
     <section class="our-jops">
         <div class="main-container">
             <div class="jops-head">
-                <h2>{{ __('انضم لفريق العمل في شركة السبك المعدني') }}</h2>
+                <h2>{{ __("Join the Team at Metal Casting Company")  }}</h2>
                 <p>{{ __('نسعى لجذب الكفاءات التي تساهم في نجاحنا المستمر وتطوير أعمالنا. إذا كنت تبحث عن فرصة عمل مميزة، استعرض الوظائف المتاحة وتقدم الآن') }}</p>
             </div>
             <div class="jops-content">

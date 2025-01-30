@@ -18,10 +18,15 @@ class Project extends Model
         'desc_ar',
         'desc_en',
         'image',
-        'address',
+        'address_ar',
+        'address_en',
 
-        'power',
-        'time',
+        'power_ar',
+        'power_en',
+
+        'time_ar',
+        'time_en',
+
         'products_en',
         'products_ar',
         'feature_en',
@@ -33,6 +38,21 @@ class Project extends Model
     public function getTargetAttribute()
     {
         return $this['targets_' . app()->getLocale()];
+    }
+
+    public function getAddressAttribute()
+    {
+        return $this['address_' . app()->getLocale()];
+    }
+
+    public function getTimeAttribute()
+    {
+        return $this['time_' . app()->getLocale()];
+    }
+
+    public function getPowerAttribute()
+    {
+        return $this['power_' . app()->getLocale()];
     }
 
     public function getProductAttribute()

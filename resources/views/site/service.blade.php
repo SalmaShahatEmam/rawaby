@@ -15,7 +15,7 @@
            <div class="col-md-6"> <img src="{{  $service->image_path }}" alt=""> </div>
            <div class="col-md-6">
                <h2> {{  $service->name }}</h2>
-               <p> {!! $service->desc !!} </p>
+               <p> {!! str($service->desc)->sanitizeHtml() !!} </p>
            </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                <div class="txt">
                <h3> {{ __('service steps') }}</h3>
 
-               <p>{!! $service->service_step !!} </p>
+               <p>{!!  str( $service->service_step)->sanitizeHtml() !!} </p>
 
                </div>
           </div>
@@ -38,7 +38,7 @@
                <div class="img"> <img src="{{ asset('site') }}/images/star.png" alt=""> </div>
                <div class="txt">
                <h3>  {{ __('advantages') }}</h3>
-               <p>{!! $service->advantage !!} </p>
+               <p>{!!  str($service->advantage)->sanitizeHtml()  !!} </p>
 
                </div>
        </div>

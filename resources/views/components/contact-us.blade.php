@@ -3,7 +3,7 @@
          <div class="row">
             <div class="col-lg-6 ctm-n-padd">
                 <div class="contatc-us-form">
-                       <h2> {{ __('contact us') }} </h2>
+                       <h2> {{ __('Contact us') }} </h2>
                        <form id="contactForm" action="{{ route('site.contact.request') }}" method="post">
                             <div class="row">
                                 @csrf
@@ -22,7 +22,9 @@
                                     <span class="subject-error error-text text-danger"></span>
                                 </div>
 
-                                <div class="col-12"> <textarea placeholder="{{ __('message') }}"  name="message"></textarea>
+                                <div class="col-12">
+                                    <p style="color: #999999;">{{ __("Character Count") }}:  <span id="char-count">0</span> {{ __("of total 255") }}</p>
+                                    <textarea placeholder="{{ __('message') }}"  name="message" id="text-input" ></textarea>
                                 <span class="message-error error-text text-danger"></span>
                             </div>
                             </div>
@@ -33,7 +35,7 @@
             </div>
             <div class="col-lg-6 ctm-n-padd">
                 <div class="contact-us-info">
-                     <h2> {{ __('contact info') }} </h2>
+                     <h2> {{ __('Contact info') }} </h2>
 
                      <a href="{{ 'mailto:'.getSetting('email') }}" class="contact-item">
                           <div class="icon"> <i class="fa-solid fa-envelope"></i> </div>

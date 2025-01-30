@@ -31,7 +31,7 @@ class BlogResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Blog and Visial Liberary Data');
+        return __('Blog Data');
     }
     public static function getModelLabel(): string
     {
@@ -117,6 +117,7 @@ class BlogResource extends Resource
                                 ->columnSpanFull()
                                 ->preserveFilenames()
                                 ->reorderable()
+                                ->image()
 
                                 ->required(),
                         ]),
@@ -140,7 +141,10 @@ class BlogResource extends Resource
                     ->circular(),
                 TextColumn::make('name_' . app()->getLocale())
                     ->searchable()
-                    ->label(__('name_' . app()->getLocale())),
+                    ->label(__('name_' . app()->getLocale()))
+                    ->words(20)
+                                       ->wrap(),
+
 
                 TextColumn::make('desc_' . app()->getLocale())
                     ->searchable()

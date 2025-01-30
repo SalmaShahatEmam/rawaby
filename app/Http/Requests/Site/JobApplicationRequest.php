@@ -67,7 +67,7 @@ class JobApplicationRequest extends FormRequest
         ],
     ];
 }
-public function messages(): array
+/* public function messages(): array
 {
     return [
         "name.required" => "الاسم مطلوب.",
@@ -91,7 +91,7 @@ public function messages(): array
         "city.required" => "المدينة مطلوبة.",
         "city.regex" => "المدينة يجب أن تكون مكونة من حرفين على الأقل باللغة العربية ولا تحتوي على أرقام.",
     ];
-}
+} */
 
 
     /* public function messages(): array

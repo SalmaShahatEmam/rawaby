@@ -66,6 +66,7 @@ class QuestionResource extends Resource
                 ->maxLength(255),
                 Select::make('category')
                 ->label(__('category'))
+                ->required()
     ->options([
         'all' => __('all'),
         'services' => __('services , products , production lines'),
@@ -90,6 +91,7 @@ class QuestionResource extends Resource
                 ->words(9),
                 TextColumn::make('category')
                 ->label(__('category'))
+              //  ->min(3)
                 ->formatStateUsing(function (string $state) {
                     return match ($state) {
                         'all' => __('all'),

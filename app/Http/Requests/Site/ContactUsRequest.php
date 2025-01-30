@@ -37,7 +37,7 @@ class ContactUsRequest extends FormRequest
                 "digits_between:9,15", // Between 9 and 15 digits
                 "regex:/^\d+$/", // Only numeric values
             ],
-            'message' => 'required|min:3|max:50',
+            'message' => 'required|min:3|max:255',
             "subject"=>"required|min:3|max:50"
         ];
     }
@@ -59,7 +59,7 @@ class ContactUsRequest extends FormRequest
 
         "message.required" => __("The message is required."),
         "message.min" => __("The message must contain at least 3 characters."),
-        "message.max" => __("The message must not exceed 50 characters."),
+        "message.max" => __("The message must not exceed 255 characters."),
 
         "subject.required" => __("The subject is required."),
         "subject.min" => __("The subject must contain at least 3 characters."),

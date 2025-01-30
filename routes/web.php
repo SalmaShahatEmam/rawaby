@@ -1,6 +1,7 @@
 <?php
-use App\Mail\BlogNotificationMail;
+use App\Mail\AlphaMail;
 
+use App\Mail\BlogNotificationMail;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -141,5 +142,13 @@ Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {
     // Route::get('courses', [StaticPageController::class,'courses'])->name('courses');
     //-------------------------------- End Static Page Routes ------------------------------//
     Route::get('/lang/{lang}', [HomeController::class,'lang'])->name('lang');
+
+    Route::get('search', function(){
+
+        $data=['reply'=>"Thank you for your subscription"];
+
+        Mail::to("salmaemam52@gmail.com")->send(new AlphaMail($data));
+    })->name('search');
+
 });
 

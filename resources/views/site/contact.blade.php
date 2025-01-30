@@ -35,7 +35,9 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <textarea placeholder="{{ __('Message') }}" name="message"></textarea>
+                        <p>{{ __("Character Count") }}: <span id="char-count">0</span></p>
+
+                        <textarea placeholder="{{ __('Message') }}" name="message" id="text-input" ></textarea>
                         <span class="message-error error-text text-danger"></span>
                     </div>
                 </div>
@@ -92,5 +94,15 @@
         });
 
     }
+
+       // Get references to the textarea and the span
+       const textInput = document.getElementById('text-input');
+    const charCount = document.getElementById('char-count');
+
+    // Add an event listener for input events
+    textInput.addEventListener('input', function() {
+      // Update the character count
+      charCount.textContent = textInput.value.length;
+    });
 </script>
 @endpush

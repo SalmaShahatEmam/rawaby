@@ -1,16 +1,22 @@
+
 @props(["partners"])
-<section class="our-partners">
-    <div class="our-partners-container">
-        <div class="swiper myPartnersSwiper">
-            <div class="swiper-wrapper">
-                @foreach($partners as $partner)
-                <div class="swiper-slide">
-                    <div class="our-partners-card">
+
+<section class="partners">
+    <div class="main-container">
+        <div class="owl-carousel owl-partner owl-theme">
+            @foreach ($partners as $partner)
+            <div class="item">
+                <div class="partner-item">
+                    <div class="partner-img">
                         <img src="{{ $partner->image_path }}" alt="">
                     </div>
+
                 </div>
-                @endforeach
             </div>
+            @endforeach
+
+
+
         </div>
     </div>
 </section>

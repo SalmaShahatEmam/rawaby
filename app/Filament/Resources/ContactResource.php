@@ -161,7 +161,7 @@ class ContactResource extends Resource
                         ->action(function (Contact $contact, array $data) {
 
 
-                            //Mail::to($contact->email)->send(new AlphaMail($data));
+                            Mail::to($contact->email)->send(new AlphaMail($data));
 
                             $contact->isReply = 1;
                             $contact->save();

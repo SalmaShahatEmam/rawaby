@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\ServiceRequest;
+use App\Models\Category;
+use App\Models\ProductSize;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
@@ -18,13 +21,34 @@ class Product extends Model
         'desc_ar',
         'desc_en',
         'image',
-        'advantages_en',
-        'advantages_ar',
-        'applications_en',
-        'applications_ar',
-        'feature_en',
-        'feature_ar'
+        'discount'
+
     ];
+
+    public function sizes() :HasMany
+    {
+        return $this->hasMany(ProductSize::class, 'product_id', 'id');
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class, 'product_id', 'id');
+    }
+
+    public function rates(): HasMany
+    {
+        return $this->hasMany(Rate::class, 'product_id', 'id');
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class ,"product_category");
+    }
+
+    public function getPriceAfterDiscountAttribute()
+    {
+        return $this['price'] - ($this['discount'] * $this['price']  /100 );
+    }
 
     public function getNameAttribute()
     {
@@ -35,26 +59,9 @@ class Product extends Model
     {
         return $this['desc_' . app()->getLocale()];
     }
-    public function getAdvantageAttribute()
-    {
-        return $this['advantages_' . app()->getLocale()];
-    }
-    public function getApplicationAttribute()
-    {
-        return $this['applications_' . app()->getLocale()];
-    }
-    public function getFeatureAttribute()
-    {
-        return $this['feature_' . app()->getLocale()];
-    }
 
     protected $appends = ['image_path'];
 
-
-    public function requests()
-    {
-        return $this->morphMany(ServiceRequest::class, 'requestable');
-    }
     public function getImagePathAttribute()
     {
         return asset('storage/' . $this->image);

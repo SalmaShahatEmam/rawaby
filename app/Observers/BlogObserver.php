@@ -11,11 +11,11 @@ class BlogObserver
 {
     public function created(Blog $blog)
     {
-        $users = BlogUsers::all();
+      /*   $users = BlogUsers::all();
 
         foreach ($users as $user) {
             Mail::to($user->email)->queue(new BlogNotificationMail($blog));
-        }
+        } */
     }
 
     /**

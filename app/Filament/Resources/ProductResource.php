@@ -3,22 +3,25 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
-use App\Models\Blog;
 use Filament\Tables;
 use App\Models\Product;
+
 use App\Models\Project;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Filters\TrashedFilter;
 use App\Filament\Resources\ProductResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProductResource\RelationManagers;
@@ -31,7 +34,7 @@ class ProductResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Products and Product Lines Data');
+        return __('Category and Products Data');
     }
 
     public static function getModelLabel(): string
@@ -48,17 +51,10 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                /*
-                 'advantages_en',
-        'advantages_ar',
-        'applications_en',
-        'applications_ar',
-        'feature_en',
-        'feature_ar'
-                 */
+
                 Grid::make()->schema([
-                    Section::make(__('Project Information'))
-                        ->description(__('This is the main information about the Project.'))
+                    Section::make(__('Product Information'))
+                        ->description(__('This is the main information about the Product.'))
                         ->collapsible(true)
                         ->schema([
                             TextInput::make('name_ar')
@@ -85,12 +81,35 @@ class ProductResource extends Resource
                                 ->unique(Product::class, 'slug', ignoreRecord: true)
                                 ->disabled()
                                 ->dehydrated(),
+                            Select::make('categories')
+                                ->multiple()
+                                ->relationship('categories', 'name_' . app()->getLocale())
+                                ->preload()
+                                ->searchable()
+                                ->required(),
+
+                                TextInput::make('descount')
+                                ->label(__('descount'))
+                                ->minLength(3)
+                                ->maxLength(255)
+
+                                ->required(),
+                           Repeater::make('sizes')
+                                ->relationship('sizes') // Reference to ProductSize model
+                                ->schema([
+                                    TextInput::make('size')->required()->label('Size'),
+                                    TextInput::make('quantity')->numeric()->minValue(0)->required()->label('Quantity'),
+                                    TextInput::make('price')->numeric()->minValue(0)->required()->label('Price'),
+                                ])
+                                ->addActionLabel('Add Size')
+                                ->columnSpanFull(),
+
 
                         ])->columns(3),
 
 
                     Section::make(__('Description Information'))
-                        ->description(__('This is the description information about the blog.'))
+                        ->description(__('This is the description information about the product.'))
                         ->collapsible(true)
 
                         ->schema([
@@ -130,7 +149,7 @@ class ProductResource extends Resource
                         ]),
 
                     Section::make(__('Images Information'))
-                        ->description(__('This is the images information about the blog.'))
+                        ->description(__('This is the images information about the product.'))
                         ->collapsible(true)
 
                         ->schema([
@@ -138,140 +157,31 @@ class ProductResource extends Resource
 
 
                             FileUpload::make('image')
-                                ->label(__('image'))
-                                ->disk('public')->directory('blogs')
+                                ->label(__('main image'))
+                                ->disk('public')->directory('products')
                                 ->columnSpanFull()
+                                ->image()
+
+                                //->acceptedFileTypes(['images/*'])
+
                                 ->preserveFilenames()
                                 ->reorderable()
 
                                 ->required()
-                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp']) // Restrict to specific image MIME types
                                 ->maxFiles(1),
+
+
+                        FileUpload::make('images')
+                       ->label(__('other images'))
+                       ->disk('public')->directory('products')
+
+                        ->multiple()
+                      //  ->maxParallelUploads(5)
+                   //   ->reorderable()
+                      ->storeFiles()
                         ]),
 
 
-                    Section::make(__('Advantages Information'))
-                        ->description(__('This is the Advantages information about the Product.'))
-                        ->collapsible(true)
-
-                        ->schema([
-
-                            RichEditor::make('advantages_ar')
-                                ->label(__('advantage in arabic'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
-                                ->required()
-                                ->disableToolbarButtons([
-                                    'attachFiles',
-                                    'codeBlock',
-                                    'table',
-                                    'italic',
-
-
-                                ]),
-
-
-                            RichEditor::make('advantages_en')
-                                ->label(__('advantage in english'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-                                ->columnSpan(3)
-                                ->required()
-                                ->disableToolbarButtons([
-                                    'attachFiles',
-                                    'codeBlock',
-                                    'table',
-                                    'italic',
-
-
-                                ]),
-
-                        ]),
-
-
-                    Section::make(__('Feature Information'))
-                        ->description(__('This is the feature information about the Product.'))
-                        ->collapsible(true)
-
-                        ->schema([
-
-                            RichEditor::make('feature_ar')
-                                ->label(__('feature in arabic'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
-                                ->required()
-                                ->disableToolbarButtons([
-                                    'attachFiles',
-                                    'codeBlock',
-                                    'table',
-                                    'italic',
-
-
-                                ]),
-
-
-                            RichEditor::make('feature_en')
-                                ->label(__('feature in english'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
-                                ->required()
-                                ->disableToolbarButtons([
-                                    'attachFiles',
-                                    'codeBlock',
-                                    'table',
-                                    'italic',
-
-
-                                ]),
-
-                        ]),
-
-                    Section::make(__('applications Information'))
-                        ->description(__('This is the applications information about the Product.'))
-                        ->collapsible(true)
-
-                        ->schema([
-
-                            RichEditor::make('applications_ar')
-                                ->label(__('applications in arabic'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
-                                ->required()
-                                ->disableToolbarButtons([
-                                    'attachFiles',
-                                    'codeBlock',
-                                    'table',
-                                    'italic',
-
-
-                                ]),
-
-
-                            RichEditor::make('applications_en')
-                                ->label(__('applications in english'))
-                                ->minLength(3)
-                                ->maxLength(1500)
-
-                                ->columnSpan(3)
-                                ->required()
-                                ->disableToolbarButtons([
-                                    'attachFiles',
-                                    'codeBlock',
-                                    'table',
-                                    'italic',
-
-
-                                ]),
-
-                        ]),
                 ]),
             ]);
     }
@@ -295,14 +205,23 @@ class ProductResource extends Resource
                     ->words(50),
             ])
             ->filters([
-                //
+                TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\RestoreAction::make(),
+                    Tables\Actions\ForceDeleteAction::make(),
+
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }
@@ -322,4 +241,15 @@ class ProductResource extends Resource
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
+
+
+    public static function afterCreate($record, array $data): void
+    {
+        if (!empty($data['images'])) {
+            foreach ($data['images'] as $imagePath) {
+                 dd($imagePath);
+            }
+        }
+    }
+
 }

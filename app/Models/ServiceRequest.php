@@ -17,6 +17,6 @@ class ServiceRequest extends Model
 
     public function requestable()
     {
-        return $this->morphTo();
+        return $this->morphTo()->withTrashed();
     }
 }

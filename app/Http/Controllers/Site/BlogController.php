@@ -12,26 +12,24 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::orderBy('id', 'DESC')->paginate(2);
-        $other_blogs = Blog::orderBy('id', 'DESC')->take(4)->get();
+        $recent_blogs = Blog::orderBy('id', 'DESC')->take(4)->get();
 
-        return view('site.news', compact('blogs', 'other_blogs'));
+        return view('site.blogs', compact('blogs', 'recent_blogs'));
     }
 
     public function show($slug)
     {
         $blog = Blog::where('slug', $slug)->firstOrFail();
-        $other_blogs = Blog::where('slug', '!=', $slug)->take(3)->get();
-        return view('site.blogDetails', compact('blog', 'other_blogs'));
+        $recent_blogs = Blog::orderBy('id', 'DESC')->where('slug', '!=', $slug)->take(3)->get();
+        return view('site.blogDetails', compact('blog', 'recent_blogs'));
     }
 
 
     public function blogUser(Request $request)
     {
-        $request->validate(['email'=>"required|email|unique:blog_users,email"],[
-            'email.required' => __('The email field is required.'),
-            'email.email' => __('The email must be a valid email address.'),
-            'email.unique' => __('This email is already taken.'),
-        ]);
+        $request->validate(['email'=>"required|email|unique:blog_users,email"] ,[
+            'email.unique' => __('This email is already Subsercriped.'),
+        ] );
 
         BlogUsers::create($request->all());
 

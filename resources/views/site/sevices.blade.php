@@ -20,7 +20,7 @@
 
                        <div class="txt">
                                 <p> {{  $service->name }}</p>
-                                <h4> {!! \Illuminate\Support\Str::words($service->desc, 10, '...') !!}</h4>
+                                <h4> {!! \Illuminate\Support\Str::words(str( $service->desc)->sanitizeHtml() , 10, '...') !!}</h4>
 
                                 <a href="{{ route('site.services.show',$service->slug) }}"> {{ __('Show Details') }} </a>
                        </div>

@@ -10,14 +10,14 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::paginate(4);
+        $projects = Project::orderBy('id', 'DESC')->paginate(4);
         return view('site.projects', compact('projects'));
     }
 
     public function show($slug)
     {
         $project = Project::where('slug', $slug)->firstOrFail();
-        $other_projects = Project::where('slug', '!=', $slug)->take(3)->get();
+        $other_projects = Project::orderBy('id', 'DESC')->where('slug', '!=', $slug)->take(3)->get();
         return view('site.project', compact('project', 'other_projects'));
     }
 }

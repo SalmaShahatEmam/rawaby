@@ -153,6 +153,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        "email" => "email",
+        "name" => "name",
+        "resume" => "resume",
+        "phone" => "phone",
+    ],
 
 ];

@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Blog;
+use App\Models\BlogUsers;
+use App\Models\User;
+use App\Observers\BlogObserver;
 use App\Settings\GeneralSettings;
+use App\Observers\BlogUsersObserver;
 use Illuminate\Support\ServiceProvider;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 
@@ -21,6 +26,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+
+      //   Blog::observe(BlogObserver::class);
+       // BlogUsers::observe(BlogUsersObserver::class);
+
+
+
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
             $switch
                 ->locales(['ar','en']); // also accepts a closure

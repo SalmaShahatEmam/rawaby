@@ -115,6 +115,8 @@ class HomeController extends Controller
     {
         $productlines = ProductLine::all();
 
+    //    dd($productlines);
+
         return view('site.productLines',compact('productlines'));
 
     }
@@ -208,7 +210,7 @@ class HomeController extends Controller
         // ->broadcast(User::role('admin')->first());
         ->sendToDatabase(User::role('admin')->first());
 
-    event(new DatabaseNotificationsSent(User::role('admin')->first())); 
+    event(new DatabaseNotificationsSent(User::role('admin')->first()));
 
 
 

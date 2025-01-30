@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Observers\BlogUsersObserver;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+//#[ObservedBy([BlogUsersObserver::class])]
 class BlogUsers extends Model
 {
     use HasFactory;
