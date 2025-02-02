@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Site;
 
 use App\Models\Blog;
 use App\Models\Team;
+use App\Models\Feature;
 use App\Models\Partner;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\Question;
 use App\Models\Institute;
 use App\Models\Regulations;
 use Illuminate\Http\Request;
@@ -22,8 +24,10 @@ class StaticPageController extends Controller
 {
     public function about()
     {
-      //  $partners = Partner::all();
-        return view('site.about');
+        $partners = Partner::all();
+        $features = Feature::all();
+        $questions = Question::all();
+        return view('site.about' , compact('partners','features','questions'));
     }
 
 

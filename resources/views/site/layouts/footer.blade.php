@@ -1,12 +1,12 @@
     <!-- footer -->
-    <footer style="background-image: url(images/Footer-BG\ 1.png);">
+    <footer style="background-image: url({{ asset('site') }}/images/Footer-BG\ 1.png);">
 
-        <img class="footer-top-img sound-birds"  src="images/footer-dog.png" alt="">
+        <img class="footer-top-img sound-birds"  src="{{ asset('site') }}/images/footer-dog.png" alt="">
         <div class="main-container">
             <div class="row">
                 <div class="col-lg-5 col-md-6 col-sm-12 footer-col">
                     <div class="footer-logo ">
-                        <img src="images/footer-logopng.png" alt="">
+                        <img src="{{ asset('site') }}/images/footer-logopng.png" alt="">
                     </div>
                     <div class="footer-text">
                         <p>في حدائق روابي النيل، نلتزم بتوفير مجموعة متنوعة من المنتجات التي تلبي احتياجات محبي الحيوانات الأليفة ونباتات الزينة. نسعى دائمًا لتقديم أفضل الحلول لضمان راحة ورفاهية حيواناتكم الأليفة</p>
@@ -246,6 +246,53 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
- <script src="js/main.js"></script>
+ <script src="{{ asset('site') }}/js/main.js"></script>
+ <script>
+     $(document).ready(function() {
+        $('#contactForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Clear previous error messages
+            $('.error-text').text('');
+
+            $.ajax({
+                url: $(this).attr('action'), // Use the form's action URL
+                method: 'POST',
+                data: $(this).serialize(), // Serialize the form data
+                success: function(response) {
+                    // Show a success message or redirect the user
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "{{ __('message sended successfully') }}",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    // Optionally, clear the form
+                    $('#contactForm')[0].reset();
+                },
+                error: function(xhr) {
+                    // Display validation errors
+                    if (xhr.status === 422) { // Laravel validation error status
+                        let errors = xhr.responseJSON.errors;
+                        $.each(errors, function(key, value) {
+                            $('.' + key + '-error').text(value[
+                            0]); // Display the first error message
+                        });
+                    } else {
+                        // General error message for other issues
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "error",
+                            title: "حدث خطأ. حاول مرة أخرى.",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                }
+            });
+        });
+ </script>
 </body>
 </html>

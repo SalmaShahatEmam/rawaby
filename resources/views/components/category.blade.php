@@ -1,5 +1,5 @@
-   <!-- Department classifications -->
-   <section class="department_classifications" >
+@props(["categories"])
+<section class="department_classifications" >
     <div class="main-container">
             <div class="department_classifications_head">
                    <div class="top-title"> تصنيفات الاقسام </div>
@@ -7,46 +7,19 @@
             </div>
 
             <div class="owl-carousel department_classifications_slider">
+                @foreach($categories as $category)
                   <div class="item">
                         <a href="/" class="card">
-                               <div class="img"> <img src="images/cats.png" alt=""> </div>
+                               <div class="img"> <img src="{{ $category->icon_path}}" alt=""> </div>
                                <div class="txt">
-                                   <div class="name"> قطط </div>
-                                   <p> 2000 منتج </p>
+                                   <div class="name"> {{ $category->name }} </div>
+                                   <p> {{ $category->productCount() . ' ' . __('product')}} </p>
                                </div>
                                <div class="icon"> <i class="fa-solid fa-arrow-left"></i> </div>
                         </a>
                   </div>
-                  <div class="item">
-                        <a href="/" class="card">
-                               <div class="img"> <img src="images/dogs.png" alt=""> </div>
-                               <div class="txt">
-                                   <div class="name"> كلاب  </div>
-                                   <p> 2000 منتج </p>
-                               </div>
-                               <div class="icon"> <i class="fa-solid fa-arrow-left"></i> </div>
-                        </a>
-                  </div>
-                  <div class="item">
-                        <a href="/" class="card">
-                               <div class="img"> <img src="images/birdes.png" alt=""> </div>
-                               <div class="txt">
-                                   <div class="name"> حيوانات وطيور </div>
-                                   <p> 2000 منتج </p>
-                               </div>
-                               <div class="icon"> <i class="fa-solid fa-arrow-left"></i> </div>
-                        </a>
-                  </div>
-                  <div class="item">
-                        <a href="/" class="card">
-                               <div class="img"> <img src="images/plantes.png" alt=""> </div>
-                               <div class="txt">
-                                   <div class="name">  نباتات الزينة </div>
-                                   <p> 2000 منتج </p>
-                               </div>
-                               <div class="icon"> <i class="fa-solid fa-arrow-left"></i> </div>
-                        </a>
-                  </div>
+                @endforeach
             </div>
     </div>
 </section>
+

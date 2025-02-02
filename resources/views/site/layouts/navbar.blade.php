@@ -5,13 +5,13 @@
          <div class="top-header">
                 <div class="main-container">
                        <div class="fast-delever">
-                           <img src="images/delever.png" alt="">
+                           <img src="{{ asset('site') }}/images/delever.png" alt="">
                            <p> توصيل مجاني للطلبات فوق 250 ريال داخل الرياض </p>
                        </div>
 
                        <div class="change-lang">
                            <i class="fa-solid fa-sort-down"></i>
-                           <img src="images/ar.png" alt="">
+                           <img src="{{ asset('site') }}/images/ar.png" alt="">
                            <p> عربي </p>
 
                            <div class="change-lang-menu">
@@ -24,7 +24,7 @@
 
          <div class="serch-section main-container">
               <a href="/" class="logo">
-                  <img src="images/logo.png" alt="">
+                  <img src="{{ asset('site') }}/images/logo.png" alt="">
               </a>
 
               <form class="search-input">
@@ -129,15 +129,15 @@
                            <a href="/"> الرئيسية </a>
                        </div>
                    </div>
-                   <a href="/" class="header-link">
+                   <a href="{{ route('site.about') }}" class="header-link">
                        <p> من نحن </p>
                    </a>
-                   <a href="/" class="header-link">
+                   <a href="{{  route('site.contact')}}" class="header-link">
                        <p> تواصل معنا </p>
                    </a>
                </div>
                <div class="header-contact">
-                     <div class="icon"> <img src="images/contact.png" alt=""> </div>
+                     <div class="icon"> <img src="{{ asset('site') }}/images/contact.png" alt=""> </div>
                      <div class="txt">
                          <p> تواصل معنا </p>
                          <a href="/"> +96658765867586 </a>

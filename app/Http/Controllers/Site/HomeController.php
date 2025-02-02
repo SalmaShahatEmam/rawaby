@@ -13,6 +13,7 @@ use App\Models\Partner;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\Category;
 use App\Models\Liberary;
 use App\Models\Question;
 use App\Models\ProductLine;
@@ -40,12 +41,13 @@ class HomeController extends Controller
         $products = Product::all();
         $projects = Project::all();
         $partners = Partner::all();
+        $categories = Category::all();
         //fix this
         $blogs = Blog::orderBy('created_at', 'desc')->take(2)->get();
         $questions = Question::all();
 
 
-        return view('site.home', compact('sliders','products','partners','questions', 'services','projects', 'partners','blogs'));
+        return view('site.home', compact('sliders','categories','products','partners','questions', 'services','projects', 'partners','blogs'));
     }
 
 

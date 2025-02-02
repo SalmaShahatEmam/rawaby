@@ -187,13 +187,9 @@ header{
   animation: tada 0.8s infinite;
 }
 
-.responsive-menu .header-link:hover{
+.header-link:hover{
   background-color:  white;
   border-radius: 10px;
-}
-
-.responsive-menu .header-link:hover p{
-    color:var(--primary1);
 }
 
 

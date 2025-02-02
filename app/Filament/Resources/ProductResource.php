@@ -81,31 +81,34 @@ class ProductResource extends Resource
                                 ->unique(Product::class, 'slug', ignoreRecord: true)
                                 ->disabled()
                                 ->dehydrated(),
+
+
+
+                        ])->columns(3),
+
+                    Section::make(__('Category and Discount Information'))
+                        ->description(__('This is the category information about the product.'))
+                        ->collapsible(true)
+
+                        ->schema([
+
                             Select::make('categories')
+                                ->label(__('category'))
                                 ->multiple()
                                 ->relationship('categories', 'name_' . app()->getLocale())
                                 ->preload()
                                 ->searchable()
                                 ->required(),
 
-                                TextInput::make('descount')
-                                ->label(__('descount'))
+                            TextInput::make('discount')
+                                ->label(__('discount'))
                                 ->minLength(3)
                                 ->maxLength(255)
 
                                 ->required(),
-                           Repeater::make('sizes')
-                                ->relationship('sizes') // Reference to ProductSize model
-                                ->schema([
-                                    TextInput::make('size')->required()->label('Size'),
-                                    TextInput::make('quantity')->numeric()->minValue(0)->required()->label('Quantity'),
-                                    TextInput::make('price')->numeric()->minValue(0)->required()->label('Price'),
-                                ])
-                                ->addActionLabel('Add Size')
-                                ->columnSpanFull(),
 
+                        ]),
 
-                        ])->columns(3),
 
 
                     Section::make(__('Description Information'))
@@ -148,6 +151,22 @@ class ProductResource extends Resource
 
                         ]),
 
+                        Section::make(__('Sizes Information'))
+                        ->description(__('This is the sizes information about the product.'))
+                        ->collapsible(true)
+                        ->schema([
+
+                            Repeater::make('sizes')
+                            ->relationship('sizes') // Reference to ProductSize model
+                            ->schema([
+                                TextInput::make('size')->required()->label(__('Size')),
+                                TextInput::make('quantity')->numeric()->minValue(0)->required()->label(__('Quantity')),
+                                TextInput::make('price')->numeric()->minValue(0)->required()->label(__('Price')),
+                            ])
+                            ->addActionLabel(__('Add Size'))
+                            ->columnSpanFull(),
+
+                        ]),
                     Section::make(__('Images Information'))
                         ->description(__('This is the images information about the product.'))
                         ->collapsible(true)
@@ -171,14 +190,11 @@ class ProductResource extends Resource
                                 ->maxFiles(1),
 
 
-                        FileUpload::make('images')
-                       ->label(__('other images'))
-                       ->disk('public')->directory('products')
-
-                        ->multiple()
-                      //  ->maxParallelUploads(5)
-                   //   ->reorderable()
-                      ->storeFiles()
+                            FileUpload::make('images')
+                                ->label(__('more images'))
+                                ->multiple()
+                                ->directory('products')
+                                ->disk('public')
                         ]),
 
 
@@ -241,15 +257,4 @@ class ProductResource extends Resource
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
-
-
-    public static function afterCreate($record, array $data): void
-    {
-        if (!empty($data['images'])) {
-            foreach ($data['images'] as $imagePath) {
-                 dd($imagePath);
-            }
-        }
-    }
-
 }

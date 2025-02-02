@@ -53,12 +53,12 @@
             <div class="about-img">
                 <div class="img-container dog-sound">
 
-                    <img src="images/about.png" alt="">
+                    <img src="{{ asset('site') }}/images/about.png" alt="">
                     <audio preload="auto" id="dogSound" src="./1055629880_2049404851_2101504403.mp3" loop></audio>
                 </div>
                 <div class="lable1">
                     <div class="lablel-img">
-                        <img src="./images/heart.svg" alt="">
+                        <img src="{{ asset('site') }}/images/heart.svg" alt="">
                     </div>
                     <p>مجموعة  من الأدوات  الخاصة بالرعاية</p>
                     <svg width="100%" height="100%">
@@ -72,7 +72,7 @@
 
                 <div class="lable2">
                     <div class="lablel-img">
-                        <img src="./images/dogfood.svg" alt="">
+                        <img src="{{ asset('site') }}/images/dogfood.svg" alt="">
                     </div>
                     <p>مجموعة  من الأدوات  الخاصة بالرعاية</p>
                     <svg width="100%" height="100%">

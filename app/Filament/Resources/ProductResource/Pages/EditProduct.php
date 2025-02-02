@@ -16,4 +16,24 @@ class EditProduct extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+
+    protected function afterSave(): void
+    {
+        $product = $this->record;
+        if ($product->images) {
+
+            $product->images()->delete();
+        }
+
+        $uploadedImages = $this->form->getState()['images'];
+
+        foreach ($uploadedImages as $image) {
+            $product->images()->create([
+                'path' => $image,
+            ]);
+        }
+    }
+
+
 }
